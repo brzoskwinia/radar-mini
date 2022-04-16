@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://m.pogodynka.pl/radar/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="robots" content="all">
+		<meta name="HandheldFriendly" content="true">
+		<meta name="Viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+				<meta name="Description" content="Pogodynka">
+		<meta name="Keywords" content="altamedia">
+				<link rel="shortcut icon" href="http://m.pogodynka.pl/img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="http://m.pogodynka.pl/img/favicon.ico" type="image/x-icon">
+				<title>Radar+Piorun</title>
+		
+						<style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: Tahoma, Arial;
+            }
+            #m_main{
+                width: 100%;
+            }   
+            
+            #top_date{
+                float: right;
+                padding-right: 5px;
+                padding-top: 7px;
+            }
+            
+            .poglogo{
+                padding-left: 5px;
+                padding-top: 5px;
+            }
+
+            #m_top{
+                background-color: #555c63;
+                height: 30px;
+               
+            }
+            
+            #m_menu{
+                height: 50px;
+                background-color: #b3b5b8;
+            }
+            
+            #menu_1{
+                background-color: #cdd1d4;
+                float: left;
+                width: 20%;
+                height: 100%;
+            }
+            
+            #menu_2{
+                background-color: #c1c3c7;
+                float: left;
+                width: 20%;
+                height: 100%;
+            }
+            
+            #menu_3{
+                background-color: #b3b5b8;
+                float: left;
+                width: 20%;
+                height: 100%;
+            }
+            
+            #m_submenu{
+                height: 30px;
+                width: 100%;
+            }
+            
+            .submenu_button{
+                height: 100%;
+                float: left;
+                width: 50%;
+                
+            }
+            
+            .submenu_button_rad{
+                height: 100%;
+                float: left;
+                width: 20%;
+            }
+            
+            .warn1{
+                background-color: #8ccc38;
+            }
+            
+            .warn2{
+                background-color: #555c63;
+            }
+            
+            .m_submenu_item{
+                padding-left: 8px;
+                padding-top: 6px;
+                display: block;
+                text-decoration: none;
+                color: white;
+                font-size: 14px;
+            }
+            
+            .menu_1_text{
+                padding-top: 6px;
+            }
+            
+            .menu_2_text{
+                padding-top: 15px;
+            }
+            
+            .menu_3_text{
+                padding-top: 15px;
+            }
+            
+            .menu_text{
+                padding-left: 8px;
+                height: 100%;
+                vertical-align: middle;
+                display: block;
+                text-decoration: none;
+                color: white;
+   
+            }
+          
+            #m_bottom{
+                background-color: #555c63;
+                width: 100%;
+                heigh: 10px;
+                color: white;
+                font-size: 12px;
+                text-align: center;
+            }
+            
+            #m_bigtitle{
+                height: 70px;
+                width: 100%;
+            }
+            
+            
+            
+            .whitetime_font_1{
+                font-size: 12px;
+                color: #ffffff;
+            }
+            
+            .whitetime_font_2{
+                font-size: 14px;
+                color: #ffffff;
+            }
+
+            #m_bigtitle_cityname{
+                font-size: 36px;
+                color: #555c63;
+                display: block;
+                clear: both;
+                
+            }
+            
+            #m_bigtitle_left{
+                float: left;
+                padding-top: 2px;
+            }
+
+            #m_bigtitle_description{
+                font-size: 12px;
+                color: #555c63;
+                display: block;
+            }
+            
+            #m_bigtitle_search{
+                width: 45px;
+                height: 45px;
+                background-color: #cdd0d3;
+                float: right;
+                margin-top: 12px;
+            }
+            #m_bigtitle_search_icon{
+                margin-left: 9px;
+                margin-top: 8px;
+            }
+            
+            
+            #m_bigsynop{
+                
+            }
+            
+            #m_bigsynop_line{
+                background-color: #cbcdcf;
+                height: 1px;
+                width: 100%;
+            }
+            
+            #m_bg_margin{
+                background-color: #eff0f1;
+                padding-left: 8px;
+                padding-right: 8px;
+                
+            }
+            
+            .m_bigsynop_cont{
+                width: 50%;
+                margin: 0;
+                padding: 0;
+                height: 164px;  
+                float: left;
+            }
+            
+            .m_bigsynop_pog{
+                width: 120px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 7px;
+            }
+            
+            .m_bigsynop_pog_day{
+                color: #555c63;
+                font-size: 16px;
+                float: left;
+                padding-top: 5px;
+            }
+            
+            .m_bigsynop_pog_temp{
+                color: #555c63;
+                font-size: 25px;
+                float: right;
+               
+            }
+            
+            .m_bigsynop_pog_icon{
+                text-align: center;
+                padding: 3px;
+                clear: both;
+            }
+            
+            .m_bigsynop_pog_desc{
+                color: #555c63;
+                text-align: center;
+                font-size: 13px;
+            }
+            
+            #m_prog_model{
+                color: white;
+                text-align: center;
+                font-size: 13px;
+                height: 24px;
+                padding-top: 6px;
+                background-color: #8995a1;
+            }
+            
+            .m_listm_desc{
+                font-size: 10px;
+                color: #8995a1; 
+                padding-top: 5px;
+                height: 17px;
+            }
+            
+            .m_listm_city{
+                background-color: #cdd0d4;
+                height: 24px;
+                margin-bottom: 5px;
+                padding-bottom: 6px;
+                font-size: 13px;
+                color: #555c63;
+            }
+            
+            .m_listm_city2{
+                background-color: #cdd0d4;
+                height: 42px;
+                padding-top: 6px;
+                margin-bottom: 5px;
+                font-size: 13px;
+                color: #555c63;
+            }
+
+            .m_lm_marg{
+                padding-top: 6px;
+            }
+            
+        
+            .m_lmc_marg1{
+                padding-top: 6px;
+            }
+            
+            .m_lmc_marg2{
+                padding-top: 3px;
+            }
+            
+            .m_lmc_marg3{
+                padding-top: 3px;
+            }
+            
+            .m_lmc_marg4{
+                padding-top: 6px;
+            }
+            
+            .m_lmc_marg5{
+                padding-top: 6px;
+            }
+            
+            .m_listm_l1{
+                width: 48%;
+                float: left;
+            }
+            .m_listm_l2{
+                width: 13%;
+                float: left;
+                text-align: center;
+            }
+            .m_listm_l3{
+                width: 13%;
+                float: left;
+                text-align: center;
+            }
+            .m_listm_l4{
+                width: 13%;
+                float: left;
+                text-align: center;
+            }
+            .m_listm_l5{
+                width: 13%;
+                float: left;
+                text-align: center;
+                color: #8995a1;
+            }
+
+            .m_searchm_l1{
+                width: 48%;
+                float: left;
+/*                background-color: red;*/
+                height: 19px;
+                
+            }
+            .m_searchm_l2{
+                width: 13%;
+                float: left;
+                text-align: center;
+/*                background-color: greenyellow;*/
+                height: 19px;
+               
+            }
+            .m_searchm_l3{
+                width: 13%;
+                float: left;
+                text-align: center;
+/*                background-color: pink;*/
+                height: 19px;
+               
+            }
+            .m_searchm_l4{
+                width: 13%;
+                float: left;
+                text-align: center;
+/*                background-color: yellow;*/
+                height: 19px;
+               
+            }
+            .m_searchm_l5{
+                width: 13%;
+                float: left;
+                text-align: center;
+/*                background-color: blue;*/
+                height: 19px;
+                
+            }
+            
+            .m_progm_l1{
+                width: 20%;
+                float: left;
+/*                background-color: red;*/
+                height: 19px;
+                
+            }
+            .m_progm_l2{
+                width: 20%;
+                float: left;
+                text-align: center;
+/*                background-color: greenyellow;*/
+                height: 19px;
+               
+            }
+            .m_progm_l3{
+                width: 20%;
+                float: left;
+                text-align: center;
+/*                background-color: pink;*/
+                height: 19px;
+               
+            }
+            .m_progm_l4{
+                width: 20%;
+                float: left;
+                text-align: center;
+/*                background-color: yellow;*/
+                height: 19px;
+               
+            }
+            .m_progm_l5{
+                width: 20%;
+                float: left;
+                text-align: center;
+/*                background-color: blue;*/
+                height: 19px;
+                
+            }
+            
+            .m_marginin{
+                margin-left: 8px;
+            }
+               
+            #m_radarplayer{
+                height: 30px;
+                width: 100%;
+            }
+            
+            .m_rp_play{
+                background-color: #c4e944;
+                width: 40%;
+                text-align: center; 
+            }
+            
+            .m_rp_rewindleft{
+                background-color: #82d318;
+                width: 8%;
+                text-align: center; 
+            }
+            
+            .m_rp_rewindright{
+                background-color: #4ab124;
+                width: 8%;
+                text-align: center; 
+            }
+            
+            .m_rp_label{
+                background-color: white;
+                width: 44%;
+                text-align: center; 
+            }
+
+            .onlymobile{
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: 8px;
+                font-size: 12px;
+                color: #555c63;
+            }
+            
+            .m_rp_sub{
+                 float: left;
+                 height: 100%;
+            }
+            
+            .m_rp_item{
+                padding-top: 6px;
+                display: block;
+                text-decoration: none;
+                color: white;
+                font-size: 14px;
+            }
+            
+            .cust_lab{
+                color: #555c63;
+            }
+            
+            .brad_1{
+                background-color: #8ccc38;
+            }
+            
+            .brad_2{
+                background-color: #a2a6aa;
+            }
+            
+            .brad_3{
+                background-color: #93979c;
+            }
+            
+            .brad_4{
+                background-color: #83888d;
+            }
+            
+            .brad_5{
+                background-color: #747a7f;
+            }
+            
+            #m_content{
+               background-color: #eff0f1;
+            }
+            
+            .m_submenu_radar_img{
+                float: right;
+                padding-right: 5px;
+            }
+            .m_synop_pog_icon_i{
+               
+            }
+            
+            #cosmo-info{
+                padding-left: 8px;
+                font-size: 10px;
+                color: #8995a1;
+                padding-bottom: 5px;
+            }
+            
+            .s_search_text{
+                color: #555c63;
+                font-size: 16px;
+                
+                float: left;
+                margin-top: 23px;
+            }
+            
+            .s_notfound{
+                color: #555c63;
+                font-size: 16px;
+                padding-top: 23px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .s_search_input{
+                float: left;
+                margin-top: 22px;
+                height: 20px;
+                margin-left: 5px;
+            }
+            
+            .s_form{
+                height: 70px;
+                width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            #s_search{
+                width: 45px;
+                height: 45px;
+                background-color: #cdd0d3;
+                margin-top: 12px;
+                float: left;
+                margin-left: 5px;
+            }
+            
+            #s_search_icon{
+                margin-left: 9px;
+                margin-top: 8px;
+            }
+
+             .o_notfound{
+                color: #555c63;
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .o_occured{
+                color: #555c63;
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+            }
+            .o_link{
+                color: #555c63;
+                font-size: 12px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .warn_text{
+                padding-top: 10px;
+                text-align: left;
+                padding-left: 5px;
+                color: #555c63;
+                font-size: 12px;
+                padding-bottom: 10px;
+            }
+
+.content {color: #000; padding: 10px;}
+
+
+ul{margin-right:0; padding-right:0; padding-left:0px;}
+ul.listmenu{margin:0; list-style:none;}
+ul.listmenu li a.m {border-bottom:1px dashed #a6a6a6;font-weight:bold; color:#1d1d1d; font-weight:bold; font-size:12px;}
+a.m{text-indent:10px;background:#f3f3f3 url(http://m.pogodynka.pl/img/st.gif) no-repeat left; display:block;padding:7px;text-decoration:none;}
+ul.text li {color:#1d1d1d;font-size:12px;text-indent:10px;background:#f3f3f3 url(http://m.pogodynka.pl/img/st.gif) no-repeat left; display:block;padding:7px;}
+
+img{border: none}
+a:hover {font-size: 10pt; color: #555c63; text-decoration: underline;}
+a:link { font-size: 10pt; color: #555c63; text-decoration: none;}
+a:visited { font-size: 10pt; color: #555c63; text-decoration: none}
+input.msisdn{-wap-input-format: "*N";}
+inline { display: inline-block;}
+
+
+.search{background:#217CD7 url(http://m.pogodynka.pl/img/mpewniak_search_center2.jpg) repeat-x top; padding:3px 10px 3px 5px; font-weight:bold; 
+font-size:12px;text-align:right;color:white;}
+.search table{text-align:right; width:100%;border:none;}
+.search table td{text-align:right;border:none;}
+.search input{border:1px solid #d3d3d3;display:table-cell;vertical-align: top;}
+.search input.field{height:24px;width:145px;padding-left:5px;}
+.datatype-space{padding-top: 3px; padding-bottom: 3px;}
+
+.bggrey{background-color:#EFF6FE; padding:10px; margin:5px 0px;}
+.tac{text-align:center;}
+.bgblack{background:#1A69B3 url(http://m.pogodynka.pl/img/mpewniak_search_center.jpg); font-weight:bold; background-color:#1A69B3; padding:5px 10px; 
+color:white; height: 20px;}
+.bgblue{background:#1A69B3 url(/img/1_06.png);height:14px; font-weight:bold; font-size:12px; background-color:#1A69B3; padding:0px 0px; color:white;}
+.bgblue2{background:#1A69B3 url(/img/1_29.png);height:15px; font-weight:bold; font-size:12px; background-color:#1A69B3; padding:0px 0px; color:white;}
+.bginfo{clear: both; font-size:12px; color: #3C99DC;}
+.bginfo-margin{clear: both; font-size:12px; color: #3C99DC; padding:10px; }
+.bginfo2{font-size:12px; font-weight:bold; color: #1663B1;  padding:10px; }
+.bginfoItem{padding-bottom:5px;}
+.nomargin {margin: 0;}
+.spacer {clear: both;}
+
+.left{text-align: left}
+.center{text-align: center}
+.right{text-align: right}
+.bold{font-weight: bold}
+.normal{font-weight: normal;}
+.italic{font-style:italic}
+.normal{font-weight:normal}
+.white{color: #FFFFFF;}
+.black{color: #000000;}
+.xs{font-size:10px;}
+.s{font-size:11px;}
+.m{font-size:12px;}
+.l{font-size:16px;}
+.xl{font-size:17px;}
+.xxl{font-size:19px;}
+
+.s18{font-size:18px;}
+.s14{font-size:14px;}
+
+.boxradio{
+text-align: left;
+width: 180px;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+.paddingHor{padding: 10px 0;}
+
+
+.tm{font-weight: bold; margin-left: 5px;}
+.mp{font-size:10pt;}
+.lp{font-size:10pt; font-weight: bold;}
+
+.brownc {color: #5e4f4f; font-family: Tahoma, Arial;}
+.white {color: white;}
+.red {color: red}
+
+.copyright{color: gray; font-size: 9px;}
+.pager{text-align: center; margin-top :15px; letter-spacing:2px;}
+.pager a{font-size: 14px;}
+.ad {padding-top:10px;padding-bottom:10px;text-align:center;background-color:#F3F3F3;}
+a.ad, .ad a {color: #000000; text-decoration:none;}
+a.ad:active, .ad a:active {color: #000000; text-decoration:none;}
+a.ad:hover, .ad a:hover {text-decoration:underline;}
+
+
+div.location{text-align:center;padding: 10px 0;}
+div.location input{width:90%}
+div.footerMenu{font-size:11px;color:black;}
+div.footerMenu a{color:black;text-decoration:none;}
+div.footerMenu a:hover{color:black;text-decoration:underline;}
+div.footerMenu a:active{color:black;}
+div.footerMenuDesc{font-size:10px;}
+div.footer{font-size:12px;text-align:center;padding: 15px 15px 5px 0; color:#8AB1D8; font-weight:bold;}
+input.form{border: 1px solid #1D6DBD;}
+input.error{border: 1px solid #C00000;background-color:#FFE8E8;color:#C00000;}
+.deviceWidth{width:100%;}
+
+p {margin-top: 4px;margin-bottom: 4px;}
+p img {vertical-align: middle;}
+
+.center {text-align: center;}
+.details { margin-bottom: 3px;padding: 6px 10px 6px 18px;}
+
+.details_personalized {background-color: #EFF6FE; padding: 0px 0px 5px 0px; margin-bottom:5px; clear: both;}
+.td_personalized_details_left {width: 50%; vertical-align: top; background-color: #FFFFFF; padding: 2px;}
+.td_personalized_details_right {widht: 50%; vertical-align: top; background-color: #FFFFFF; padding: 2px;}
+.table_personalized {border-spacing: 8px;}
+
+.searchform {font-weight: bold;padding: 5px 0px 5px 0px;color: #1663B1;}
+.searchform input, .searchform label {vertical-align: middle;}
+.up20 {position: relative; top: -20px;}
+.footermenu {text-align: center;margin-top: 15px;}
+.headermenu {text-align: center;margin-top: 5px;}
+{* .darkblue {color: #1d4664;} *}
+.darkblue {color: #3971aa;}
+.blue {color: #1663B1;}
+.details p.m {color: #444444;}
+.list tr td {width: 33%}
+.list tr td p {margin-left: 56%;}
+.list tr td.left {text-align: left; width: 33%}
+table {border-spacing: 0px; width: 100%;}
+/* div.warns { width: 275px;} */
+div.warnswoj {clear: both; margin-left: auto; margin-right: auto; width:85%; margin-top: 5px;}
+div.warns a, div.warns p, div.warnswoj a, div.warnswoj p {display: block; padding: 4px;}
+div.warns-box {text-align: center; padding-bottom: 0px;}
+.blueborder {border: solid 1px #AAAAFF; padding: 10px; background-color: white;}
+
+.wojwar1 {background-color: #FFFFAA; margin: 2px;}
+.wojwar2 {background-color: #FFCC99; margin: 2px;}
+.wojwar3 {background-color: #FFC5C5; margin: 2px; }
+
+.war1 {color: yellow;}
+.war2 {color: orange;}
+.war3 {color: red;}
+
+.white-link:visited{
+    color: white;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+}
+
+.white-link:link {
+    color: white;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+}
+
+.white-link:hover{
+    color: white;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+}
+
+
+/*
+/ NEW LAYOUT CSS VERSION
+*/
+
+#main{
+ min-width: 26em; 
+}
+
+#topbar1{
+    background-image: url('/img/layout/top_bar1.jpg');
+    width: 100%;
+    height: 30px;
+    
+    color: #454545;
+    font-family: Tahoma, Arial;
+    font-size: 14px;
+}
+
+.temperature{
+    color: #005089;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+    padding-top: 10px;
+    float: left;
+}
+
+.circlebig-image{
+    margin-top: 0px;
+}
+
+.temperature-bigcity{
+    color: white;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+
+#tb1-date{
+
+    text-align: left;
+    float: left;
+    padding-left: 17px;
+    font-family: Tahoma, Arial;
+    padding-top: 5px;
+}
+
+#tb1-yourlocalization{
+
+    padding-right: 17px;
+    text-align: right;
+    float: right;
+    padding-top: 5px;
+}
+ 
+ .separator{
+    background-image: url('/img/layout/menu_separator.jpg');
+    background-repeat: no-repeat;
+    background-position: left;
+ }
+
+#logobar1{
+    background-color: white;
+    width: 100%;
+    height: 95px;
+    text-align: center;
+}
+
+.logoimg{
+    padding-top: 0px;
+}
+
+#logo-container{
+   overflow: hidden;
+}
+
+.circle-image{
+margin-top: 0px;
+float: right;
+margin-right: 15px;
+}
+
+#blackbar1{
+    background-image: url('/img/layout/menu_bar1.jpg');
+    width: 100%;
+    height: 37px;
+}
+#menubar1{
+    background-image: url('/img/layout/title_bar1.jpg');
+    width: 100%;
+    height: 35px;
+}
+
+#menubar-title{
+    font-family: Tahoma, Arial;
+    font-size: 14px;
+    color: #454545;
+    margin-left: 17px;
+    padding-top: 9px;
+ //   font-weight: bold;
+}
+
+.menu-button{
+    border-bottom: 1px solid #d5cfb5;
+    height: 32px;
+}
+
+.weather-button{
+    height: 34px;
+}
+
+.weather-button-day{
+    float: right;
+    width: 85px;
+}
+
+.weather-button-night{
+    float: right;
+    width: 85px;
+}
+
+
+ .weatherbig-button{
+   
+    border-left: 1px solid #54c9e2;
+    border-right: 1px solid #0b6b9e;
+    height: 92px;
+}
+
+.weatherbig-button-day{
+    background-image: url('/img/elem/weatherbig-button-day.jpg');
+    float: right;
+    width: 63px;
+}
+
+.weatherbig-button-night{
+    background-image: url('/img/elem/weatherbig-button-night.jpg');
+    float: right;
+    border-right: none;
+    width: 64px;
+}
+
+.menu-button-bar{
+    height: 32px;
+    margin-bottom: 1px;
+}
+#menu-column-day{
+    width: 85px;
+    float: right;
+    text-align: left;
+}
+
+.circle-day{
+    background-image: url('/img/elem/circle-day.png');
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 50px;
+    margin-left: 13px;
+    margin-top: 10px;
+}
+
+.circle-night{
+    background-image: url('/img/elem/circle-night.png');
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 50px;
+    margin-left: 13px;
+    margin-top: 10px;
+}
+
+.circlebig-day{
+    background-image: url('/img/elem/circle-day.png');
+    background-repeat: no-repeat;
+    width: 37px;
+    height: 37px;
+    margin-left: 13px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#more-cities{
+    margin-left: 11px;
+    margin-top: 10px;
+}
+
+.me-1{
+    padding-left: 17px;
+}
+
+.menu-element{
+    font-family: Tahoma, Arial;
+    font-size: 14px;
+    color: white;
+    display: inline-block;
+    margin-top: 8px;
+    text-align: center;
+    padding-left: 13px;
+    padding-right: 10px;
+    
+}
+
+.menu-description{
+    color: #454545;
+    font-family: Tahoma, Arial;
+    font-size: 14px;
+    padding-top: 9px;
+}
+
+#copyright{
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+    color: #a6a49a;
+    float: right;
+    padding-top: 10px;
+ 
+    width: 100%;
+    text-align: center;
+}
+
+.circlebig-night{
+    background-image: url('/img/elem/circle-night.png');
+    background-repeat: no-repeat;
+    width: 37px;
+    height: 37px;
+    margin-left: 13px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.city-name{
+    font-family: Tahoma, Arial;
+    font-size: 14px;
+    color: #005089;
+    margin-left: 17px;
+    padding-top: 10px;
+}
+
+.city-name-mini{
+    font-family: Tahoma, Arial;
+    font-size: 14px;
+    color: #005089;
+    margin-left: 17px;
+    padding-top: 2px;
+}
+
+
+.gmina-name{
+	font-family: Tahoma, Arial;
+	font-size: 10px;
+	color: #005089;
+	margin-left: 22px;
+	padding-top: 0px;
+}
+
+
+#menu-column-night{
+    width: 85px;
+    border-right: none;
+    float: right;
+    text-align: left;
+}
+#menu-column-city{
+   margin-right: 170px;
+   border-left: none;
+   padding-left: 17px;
+}
+
+.city-bar-name{
+   margin-right: 130px;
+   border-left: none; 
+}
+
+.city-bar-name{
+   margin-right: 130px;
+   border-left: none;
+}
+
+.city-bar-mode2{
+    widht: 100%;
+    height: 34px;
+    border-top: 1px solid white;
+    background-color: #f2fafd;
+}
+
+.city-bar-mode3{
+    widht: 100%;
+    height: 34px;
+    border-top: 1px solid white;
+    background-color: #4f819e;
+}
+
+.city-bar-mode1{
+    widht: 100%;
+    height: 34px;
+    border-top: 1px solid white;
+    background-color: #e6f4fa;
+}
+
+#copyright-bar{
+    height: 35px;
+    background-image: url('/img/layout/title_bar1.jpg');
+    width: 100%;
+    border-top: 1px solid white;
+}
+
+#radarplayer-bar{
+    height: 43px;
+    padding-top: 10px;
+    background-image: url('/img/elem/copyright-bar.jpg');
+    width: 100%;
+    
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+    color: #5e4f4f;
+}
+
+#ad-bar{
+    width: 100%;
+    text-align: center;
+    height: 48px;
+}
+
+#bottom-menu-bar{
+    width: 100%;
+    height: 37px;
+    background-image: url('/img/layout/menu_bar1.jpg');
+}
+
+.bottom-menu-element{
+    font-family: Tahoma, Arial;
+    font-size: 14px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    margin: 0px;
+    margin-top: 9px;
+    padding-left: 17px;
+}
+
+.litebottom{
+    margin-bottom: 5px;
+}
+
+.litetop{
+    margin-top: 5px;
+}
+
+.passchoice{
+text-align: left;
+width: 200px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#bme-1{
+    width: 33%;
+}
+
+#bme-2{
+  padding-right: 10px;   
+}
+
+#bme-3{
+   padding-right: 10px;
+  
+}
+
+#bme-4{
+ padding-right: 10px;
+}
+
+#footer-text{
+    font-family: Tahoma, Arial;
+    font-size: 11px;
+    color: #aed8e5;
+    padding-top: 8px;
+}
+
+#footer-bar{
+    width: 100%;
+    height: 35px;
+    background-image: url('/img/elem/footer-bar.jpg');
+    text-align: center;
+}
+
+.menu-selected-l{
+    float: left; 
+    background-image: url('/img/elem/menu-selected-l.jpg');
+    width: 9px;
+    height: 38px;
+}
+
+.menu-selected-m{
+    float: left; 
+    height: 26px;
+    padding-top: 12px;
+    background-image: url('/img/elem/menu-selected-m.jpg');
+    color: #5e4f4f;
+}
+
+.menu-selected-r{
+    float: left; 
+    width: 10px;
+    height: 38px;
+    background-image: url('/img/elem/menu-selected-r.jpg');
+}
+
+.menu-l{
+    float: left;
+    height: 38px;
+}
+
+.menu-m{
+    float: left;
+    height: 26px;
+    padding-top: 12px;
+}
+
+.menu-r{
+    float: left;
+    height: 38px;
+}
+
+.radary-button-color{
+    border-top: 1px solid #4d88b2;
+    border-bottom: 1px solid #004474;
+    border-right: 1px solid #155684;
+    border-left: 1px solid #4d88b2;
+    background-image: url('/img/elem/button-back.jpg');
+    
+    color: white;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+}
+
+.radary-button-big{
+    height: 31px;
+    width: 77px;
+}
+
+.ind-button-big{
+    height: 31px;
+}
+
+.radary-button-small{
+    height: 31px;
+    width: 31px;
+}
+
+.more-link{
+    margin-left: 17px;
+}
+
+.arrow-main{
+    width: 4px;
+    height: 7px;
+    background-image: url('/img/elem/arrow-main.png');
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-bottom: 2px;
+}
+
+.arrow-main-white{
+    width: 4px;
+    height: 7px;
+    background-image: url('/img/elem/arrow-main-white.png');
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-bottom: 2px;
+    margin-left: 5px;
+}
+
+.arrow-main-white-back{
+    width: 4px;
+    height: 7px;
+    background-image: url('/img/elem/arrow-main-white-back.png');
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-bottom: 2px;
+    margin-left: 5px;
+}
+
+.main-button{
+margin-top: 8px;
+margin-left: 17px;
+}
+
+#radar-container{
+    width: 100%;
+    position: relative;
+}
+
+.radar-lay0{
+z-index: 50;
+}
+
+.radar-lay2{
+z-index: 51;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+
+
+.radar-lay3{
+z-index: 52;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+
+
+.radar-lay1{
+z-index: 99;
+position: absolute;
+top: 0px;
+left: 0px;
+}
+
+.radar-space{
+width: 100%;
+clear: both;
+}
+
+.opisowa-box{
+padding-right: 10px;
+padding-top: 15px;
+padding-bottom: 5px;
+padding-left: 17px;
+}
+
+.blue_color{
+color: #005089;
+}
+
+
+
+</style>
+			</head>
+	<body>
+	
+            
+
+     <div id="m_main">
+
+           
+
+                <div id="m_top">
+                    <img class="poglogo" src="./m.Pogodynka.pl_files/pogo.png">
+                    <span id="top_date" class="whitetime_font_1">
+					<div id="test2"></div>
+ 
+<script type="text/javascript">       
+    function zeroWiodace(i) {
+        return (i < 10)? '0'+i : i;
+    }
+ 
+    var czas = new Date();
+    var element = document.getElementById('test2')
+ 
+    element.innerHTML += "" + zeroWiodace(czas.getDate()) + "." + zeroWiodace(czas.getMonth()+1) + "." + czas.getFullYear();  
+</script>
+					
+					
+					</span>
+                </div>
+
+                
+
+                <div id="m_menu" class="whitetime_font_2">
+
+                    <a href="radarmini.htm">
+                        <div id="menu_1">
+                            <span class="menu_text menu_1_text">Radar</span>
+                        </div>
+                    </a>
+
+                    <a href="radar_petla.htm">
+                        <div id="menu_2">
+                            <span class="menu_text menu_2_text">Radar zapętlony</span>
+                        </div>
+                    </a>
+
+                    <a href="radar_szybki.htm">
+                        <div id="menu_3">
+                            <span class="menu_text menu_3_text">Radar zapętlony (szybki)</span>
+                        </div>
+                    </a>
+					
+					 <a href="radar_awiacja.htm">
+                        <div id="menu_2">
+                            <span class="menu_text menu_3_text">Radar (mapa:awiacja)</span>
+                        </div>
+                    </a>
+					
+					<a href="radar_szczegol.htm">
+                        <div id="menu_1">
+                            <span class="menu_text menu_3_text">Radar (mapa:szczegółowa)</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                
+                    <!--                     <div id="m_submenu">
+                                <div class="submenu_button_rad brad_1">
+                                    <a href="http://m.pogodynka.pl/warnings/" >
+                                        <span class="m_submenu_item">całość</span>
+                                    </a>
+                                </div>
+                                <div class="submenu_button_rad brad_2">
+                                    <a href="http://m.pogodynka.pl/hydrowarnings/" >
+                                        <span class="m_submenu_item">NW<img class="m_submenu_radar_img" src="/img/2014/rnw.png" /></span>
+                                    </a>
+                                </div>
+                                <div class="submenu_button_rad brad_3">
+                                    <a href="http://m.pogodynka.pl/hydrowarnings/" >
+                                        <span class="m_submenu_item">NE<img class="m_submenu_radar_img" src="/img/2014/rne.png" /></span>
+                                    </a>
+                                </div>
+                                <div class="submenu_button_rad  brad_4">
+                                    <a href="http://m.pogodynka.pl/hydrowarnings/" >
+                                        <span class="m_submenu_item">SE<img class="m_submenu_radar_img" src="/img/2014/rse.png" /></span>
+                                    </a>
+                                </div>
+                                <div class="submenu_button_rad brad_5">
+                                    <a href="http://m.pogodynka.pl/hydrowarnings/" >
+                                        <span class="m_submenu_item">SW<img class="m_submenu_radar_img" src="/img/2014/rsw.png" /></span>
+                                    </a>
+                                </div>
+                        </div> -->
+                    
+            
+            <div id="m_content">    
+
+		
+	
+	
+	<div id="radar-container">
+		<img class="radar-lay0" id="radar-background" src="./m.Pogodynka.pl_files/w=570,q=80,i=tlo_jpg6.jpg">
+		
+	
+		<img class="radar-lay1" width="640" id="radar" alt="" src="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q029.gif">
+		<div class="radar-space"></div>
+	</div>
+
+
+        <div id="m_radarplayer">
+               
+                <div class="m_rp_play m_rp_sub" onclick="playerObject.pushEvent();return false;">
+                    <span id="pushButton" class="m_rp_item">odtwarzaj <img src="./m.Pogodynka.pl_files/play.png"></span>
+                </div>
+                
+                <a id="prevRadar" onclick="playerObject.makeStep(-1);return false;" href="http://m.pogodynka.pl/radar/t=201403241720000006ac79720cb1fd972b7dd9138cd55a97">
+                    <div id="prevB" class="m_rp_rewindleft m_rp_sub">
+                         <span class="m_rp_item"><img src="./m.Pogodynka.pl_files/rewindleft.png"></span>
+                    </div>
+                </a>
+                
+                 <div class="m_rp_label m_rp_sub">
+                    <span class="m_rp_item"><span id="timetext" class="cust_lab"><a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q030.gif">Pobierz</a></span></span>
+                </div>  
+                    
+                <a id="nextRadar" onclick="playerObject.makeStep(1);return false;" href="">
+                    <div id="nextB" class="m_rp_rewindright m_rp_sub">
+                        <span class="m_rp_item"><img src="./m.Pogodynka.pl_files/rewindright.png"></span>
+                    </div> 
+                </a>
+            </div>
+
+
+
+<script type="text/javascript">
+	
+	
+	function Image2(time, imgsrc){
+		im = new Image();
+		im.alt = time;
+		im.src = imgsrc;
+		return im;
+	}
+	function Player(){
+	
+		this.paused = true;
+		this.delay = false;
+		this.current = 30;
+		this.ivID;
+		this.radars = new Array({'time':null, 'imgstr':'disabled', 'image':null},
+				
+{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q000.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032412400000f64863ec08c4aaed93382befb9df6741',
+						'image':new Image2('','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q000.gif')
+			},
+				
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q001.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032412400000f64863ec08c4aaed93382befb9df6741',
+						'image':new Image2('','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q001.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q002.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324125000003c037c8ea850e870d2a938b2461c002a',
+						'image':new Image2('2014-03-24 13:50:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q002.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q003.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324130000007deece5f99cc1bf43354f97beda8bbe5',
+						'image':new Image2('2014-03-24 14:00:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q003.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q004.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324131000004b6d21d4103099882834a9911ec636a2',
+						'image':new Image2('2014-03-24 14:10:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q004.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q005.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324132000005db942c6f05dfd2fa4fc9f25aa9cd09b',
+						'image':new Image2('2014-03-24 14:20:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q005.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q006.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032413300000b69884333d6d8aefb9f14038664ea6ea',
+						'image':new Image2('2014-03-24 14:30:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q006.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q007.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032413400000bc0ccf39099e7e8d43fef3d5837d266e',
+						'image':new Image2('2014-03-24 14:40:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q007.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q008.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324135000002c551c2ee5fcdafda66d519db007e3b2',
+						'image':new Image2('2014-03-24 14:50:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q008.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q009.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032414000000aa0d1d774f9005af800c7310bfcc163d',
+						'image':new Image2('2014-03-24 15:00:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q009.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q010.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324141000006f6a1e93918a4b0fa79590c4bad73d84',
+						'image':new Image2('2014-03-24 15:10:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q010.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q011.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=201403241420000015ff6aa245165b313118334a8b2ee882',
+						'image':new Image2('2014-03-24 15:20:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q011.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q012.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324143000009a37d594e71840d5f636d862e0fdc809',
+						'image':new Image2('2014-03-24 15:30:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q012.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q013.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032414400000b9fb65fcf1446fb69ed07e911187a749',
+						'image':new Image2('2014-03-24 15:40:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q013.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q014.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=201403241450000069b798d0e4a1571cc44a32c4d5be9aa5',
+						'image':new Image2('2014-03-24 15:50:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q014.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q015.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=201403241500000061e10b9795def28299d225b0a4ad2368',
+						'image':new Image2('2014-03-24 16:00:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q015.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q016.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324151000007ba476d22c62e0383a3a4ef62d0bd5f1',
+						'image':new Image2('2014-03-24 16:10:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q016.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q017.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324152000001c61f08ee77c15d8fd2c5e9da98ef15d',
+						'image':new Image2('2014-03-24 16:20:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q017.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q018.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324153000005db8d9ce069376a0dab12f0b3da17f74',
+						'image':new Image2('2014-03-24 16:30:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q018.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q019.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032415400000cc1e4d6d884fd938c05b8ab6ee3bc325',
+						'image':new Image2('2014-03-24 16:40:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q019.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q020.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324155000002f574f79bf34b6c70e048e0180a143a3',
+						'image':new Image2('2014-03-24 16:50:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q020.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q021.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032416000000a23ffd1d044b1eb1f9d05370823e54d2',
+						'image':new Image2('2014-03-24 17:00:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q021.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q022.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=20140324161000002408dda5666a079cf6af23c9a6ca449e',
+						'image':new Image2('2014-03-24 17:10:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q022.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q023.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032416200000c957146d9a743a806d0cf51456abc03a',
+						'image':new Image2('2014-03-24 17:20:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q023.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q024.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032416300000977f7a980dbda38b0fc8e0d81cbadf19',
+						'image':new Image2('2014-03-24 17:30:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q024.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q025.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=2014032416400000828b16bccdb171e01ace0d68e129b775',
+						'image':new Image2('2014-03-24 17:40:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q025.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q026.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=201403241650000022dc63e9e7061816e8e8b1d4aac77a3e',
+						'image':new Image2('2014-03-24 17:50:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q026.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q027.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=201403241700000067bcc58d03f5ded906eb42e6691a39ce',
+						'image':new Image2('2014-03-24 18:00:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q027.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q028.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=201403241710000074ff121e6791bf5d0bd9735bf3bbf0be',
+						'image':new Image2('2014-03-24 18:10:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q028.gif')
+			},
+					
+			{
+						'time':'<a href="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q029.gif">Pobierz</a>',
+						'imgstr':'http://m.pogodynka.pl/radar/t=201403241720000006ac79720cb1fd972b7dd9138cd55a97',
+						'image':new Image2('2014-03-24 18:20:00','http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q029.gif')
+			},
+					{'time':null, 'imgstr':'disabled', 'image':null}
+		);
+		this.play = function(param){
+			//alert(this.current);
+
+			
+			if (this.delay == true){
+					this.delay = false;
+					window.clearInterval(this.ivID);
+					this.ivID = window.setInterval(playFc, 300);
+			}
+
+			if (param==-1) this.current--; else this.current++;
+			if (this.current==0) this.current = 1;
+			if (this.radars[this.current].time==null) {
+				if ((param!=1)&&(param!=-1)){
+					this.current = 1;
+				} else this.current--;
+			}
+			
+			
+			document.getElementById('radar').src = this.radars[this.current].image.src;
+			document.getElementById('radar').alt = this.radars[this.current].image.alt;
+		
+			
+			//if (this.radars[this.current-1].imgstr=='disabled'){
+			//	document.getElementById('prevB').disabled = true;
+			//} else {
+			//	document.getElementById('prevB').disabled = false;
+			//	document.getElementById('prevRadar').href = this.radars[this.current-1].imgstr;
+			//}
+			//if (this.radars[this.current+1].imgstr=='disabled'){
+			//	document.getElementById('nextB').disabled = true;
+			//} else {
+			//	document.getElementById('nextB').disabled = false;
+			//	document.getElementById('nextRadar').href = this.radars[this.current+1].imgstr; 
+			//}
+			document.getElementById('timetext').innerHTML = this.radars[this.current].time;
+			
+
+			if ((param!=1)&&(param!=-1)){
+				if (this.paused==true){
+					this.ivID = window.setInterval(playFc, 300);
+					this.paused = false;
+				} else {
+					if (this.radars[this.current + 1].time==null) {
+						//this.delay = true;
+						//window.clearInterval(this.ivID);
+						//this.ivID = window.setInterval(playFc, 300);
+						this.pushEvent();
+					}
+				}
+			}
+			
+			
+		}
+		this.pushEvent = function(){     	
+			if (this.paused==true){
+				this.play();
+				document.getElementById('pushButton').innerHTML = 'pauza  <img src="m.Pogodynka.pl_files/pause.png" />';
+			} else {
+				window.clearInterval(this.ivID);
+				this.paused = true;
+				document.getElementById('pushButton').innerHTML = 'odtwarzaj  <img src="m.Pogodynka.pl_files/play.png" />';
+			}
+		}
+		
+		this.makeStep = function(param){
+			this.paused = false;
+			this.pushEvent();
+			this.play(param);
+			
+		}
+	}
+	playerObject = new Player();
+	function playFc(){
+		
+		playerObject.play();
+	};
+
+	
+</script>
+
+	
+         </div>
+            <div id="m_bottom">
+                copyright IMGW PIB 2007-2014            </div>
+        </div>
+        <div style="width: 100%;text-align: center;height: 60px; background-color: #eff0f1;">
+                        <script type="text/javascript" src="./m.Pogodynka.pl_files/1"></script><img src="./m.Pogodynka.pl_files/1.gif" width="0" height="0">
+                        <noscript>
+                        &lt;a href="http://mob.vendimob.pl/red/1ddf87ccebf8ab9b/[timestamp]" title="Kliknij" target="_blank"&gt;&lt;img src="http://mob.vendimob.pl/img1/1ddf87ccebf8ab9b/[timestamp]" alt="Kliknij"/&gt;&lt;/a&gt;
+                        </noscript>
+       </div>
+    
+</body></html>

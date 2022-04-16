@@ -1,0 +1,1 @@
+if (document.getElementById('vm_1ddf87ccebf8ab9b')) { document.getElementById('vm_1ddf87ccebf8ab9b').innerHTML = "<img src='http://mob.vendimob.pl/img3/1ddf87ccebf8ab9b/1/1.gif?tr=0&ts=1395682931' width='0' height='0'/>"} else { document.write("<img src='http://mob.vendimob.pl/img3/1ddf87ccebf8ab9b/1/1.gif?tr=0&ts=1395682931' width='0' height='0'/>");}
