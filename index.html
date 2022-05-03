@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="robots" content="all">
+		<meta name="HandheldFriendly" content="true">
+		<meta name="Viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="Description" content="MiniRadar">
+		<meta name="Keywords" content="altamedia">
+		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+		<link rel="apple-touch-icon" href="./images/apple_icon.png">
+				<title>Radar</title>
+		
+<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				font-family: Tahoma, Arial;
+			}
+			#m_main{
+				width: 100%;
+			}   
+			
+			#top_date{
+				float: right;
+				padding-right: 5px;
+				padding-top: 7px;
+			}
+			
+			
+
+			#m_top{
+				background-color: #555c63;
+				height: 30px;
+			   
+			}
+			
+			#m_menu{
+				height: 80px;
+				background-color: #b3b5b8;
+			}
+			
+			#menu_1{
+				background-color: #cdd1d4;
+				float: left;
+				width: 20%;
+				height: 100%;
+			}
+			
+			#menu_2{
+				background-color: #c1c3c7;
+				float: left;
+				width: 20%;
+				height: 100%;
+			}
+			
+			#menu_3{
+				background-color: #b4b4b4;
+				float: left;
+				width: 20%;
+				height: 100%;
+			}
+			
+		   
+			
+			.menu_1_text{
+				padding-top: 15px;
+			}
+			
+			.menu_2_text{
+				padding-top: 15px;
+			}
+			
+			.menu_3_text{
+				padding-top: 15px;
+			}
+			
+			.menu_text{
+				padding-left: 8px;
+				height: 100%;
+				vertical-align: middle;
+				display: block;
+				text-decoration: none;
+				color: white;
+   
+			}
+		  
+			#m_bottom{
+				background-color: #555c63;
+				width: 100%;
+				heigh: 10px;
+				color: white;
+				font-size: 12px;
+				text-align: center;
+			}
+			
+			.whitetime_font_1{
+				font-size: 12px;
+				color: #ffffff;
+			}
+			
+			.whitetime_font_2{
+				font-size: 14px;
+				color: #ffffff;
+			}
+
+		   
+			   
+			#m_radarplayer{
+				height: 30px;
+				width: 100%;
+			}
+			
+			.m_rp_play{
+				background-color: #c4e944;
+				width: 40%;
+				text-align: center; 
+			}
+			
+			.m_rp_rewindleft{
+				background-color: #82d318;
+				width: 8%;
+				text-align: center; 
+			}
+			
+			.m_rp_rewindright{
+				background-color: #4ab124;
+				width: 8%;
+				text-align: center; 
+			}
+			
+			.m_rp_label{
+				width: 44%;
+				text-align: center; 
+				color: black;
+			}
+
+		  
+			
+			.m_rp_sub{
+				 float: left;
+				 height: 100%;
+			}
+			
+			.m_rp_item{
+				padding-top: 6px;
+				display: block;
+				text-decoration: none;
+				font-size: 14px;
+			}
+			
+			
+			.text_white {
+				color: white;
+			}
+			
+			.logo{
+				padding-left: 5px;
+				padding-top: 5px;
+				float: left;
+				font-weight: bold;
+				color: white;
+				font-size: 18px;
+			}
+			
+			#radar-container{
+				width: 100%;
+				position: relative;
+			}
+
+			.radar-lay0 {
+				z-index: 50;
+			}
+
+
+			.radar-lay1{
+				z-index: 99;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+
+			.radar-space{
+				width: 100%;
+				clear: both;
+			}
+
+			.color1 {
+				color: #0000c0;
+			}
+			
+			.dot {
+				height: 15px;
+				width: 15px;
+				border-radius: 50%;
+				display: inline-block;
+			}
+			
+			.dot1 {
+				background-color: #0000c0;
+			}
+			.dot2 {
+				background-color: #0078ff;
+			}
+			.dot3 {
+				background-color: #50d0ff;
+			}
+			.dot4 {
+				background-color: #ffffff;
+			}
+			.dot5 {
+				background-color: #ffe000;
+			}
+			.dot6 {
+				background-color: #ff7000;
+			}
+			.dot7 {
+				background-color: #800000;
+			}
+
+			input.largerCheckbox {
+				transform : scale(1.5);
+				float: right;
+				margin: 4px 20px;
+			}
+		
+			label {
+				cursor: pointer;
+			}
+	</style>
+	
+</head>
+
+<body>
+	
+			
+
+	 <div id="m_main">
+
+		   
+
+				<div id="m_top">
+					<div class="logo">MiniRadar <span class="dot dot1"></span> <span class="dot dot2"></span> <span class="dot dot3"></span> <span class="dot dot4"></span> <span class="dot dot5"></span> <span class="dot dot6"></span> <span class="dot dot7"></span></div>
+					<span id="top_date" class="whitetime_font_1"><div id="full_date"></div>
+ 
+				</div>
+
+				
+				<div id="m_menu" class="whitetime_font_2">
+
+					<label>
+						<div id="menu_3">
+							<span class="menu_text menu_3_text">Pioruny &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input id="piorun" type="checkbox" class="largerCheckbox" onclick="piorun_check()"></span>
+						</div>
+					</label>
+
+					<label>
+						<div id="menu_2">
+							<span class="menu_text menu_2_text">Zapętlenie &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input id="petla" type="checkbox" class="largerCheckbox" onclick="loop_check()"></span>
+						</div>
+					</label>
+
+					<label>
+						<div id="menu_3">
+							<span class="menu_text menu_3_text">Szybkość x4&nbsp&nbsp&nbsp&nbsp<input id="szybko" class="largerCheckbox" type="checkbox" onclick="speed_check()"></span>
+						</div>
+					</label>
+					
+					<label>
+						<div id="menu_2">
+							<span class="menu_text menu_3_text"><div id="menu_tlo">Tło: awiacja &nbsp&nbsp&nbsp<input id="awiacja" class="largerCheckbox" type="checkbox" onclick="awiacja_check()"></div></span>
+						</div>
+					</label>
+					
+					<label>
+						<div id="menu_3">
+							<span class="menu_text menu_3_text">Tło: fizyczna &nbsp&nbsp&nbsp<input id="fizyczna" type="checkbox" class="largerCheckbox" onclick="fizyczna_check()"></span>
+						</div>
+					</label>
+
+				</div>
+					
+			
+			  
+
+		
+	
+	
+	<div id="radar-container">
+		<img class="radar-lay0" width="100%" id="radar-background" src="./images/polska.png">
+		
+	
+		<img class="radar-lay1" width="100%" id="radar" alt="" src="http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/p029.gif">
+		<div class="radar-space"></div>
+	</div>
+
+
+		<div id="m_radarplayer">
+			   
+				<div class="m_rp_play m_rp_sub" onclick="playerObject.pushEvent();return false;">
+					<span id="pushButton" class="m_rp_item text_white">odtwarzaj ►</span>
+				</div>
+				
+				<a id="prevRadar" onclick="playerObject.makeStep(-1);return false;" href="">
+				
+					<div id="prevB" class="m_rp_rewindleft m_rp_sub">
+						 <span class="m_rp_item text_white">◄◄</span>
+					</div>
+				</a>
+				
+				 <div class="m_rp_label m_rp_sub">
+					<span class="m_rp_item"><span id="timetext" class="cust_lab"><div id="data_start"></div></span></span>
+				</div>  
+					
+				<a id="nextRadar" onclick="playerObject.makeStep(1);return false;" href="">
+					<div id="nextB" class="m_rp_rewindright m_rp_sub">
+						<span class="m_rp_item text_white">►►</span>
+					</div> 
+				</a>
+			</div>
+
+
+
+<script type="text/javascript">
+ 
+function piorun_check() {
+
+if (piorun.checked == true){
+  document.getElementById("piorun").checked = true;
+	
+  } else {
+  document.getElementById("piorun").checked = false;
+	pioruny_load();	
+  } }
+
+  function awiacja_check() {
+  
+  if (awiacja.checked == true){
+  document.getElementById("awiacja").checked = true;
+	document.getElementById("radar-background").src = "./images/mapa_awiacja.png";
+  } else {
+  document.getElementById("awiacja").checked = false;
+	document.getElementById("radar-background").src = "./images/polska.png";
+  } }
+  
+  function fizyczna_check() {
+
+  if (fizyczna.checked == true){
+  document.getElementById("fizyczna").checked = true;
+	document.getElementById("radar-background").src = "./images/fizyczna.jpg";
+  } else {
+  document.getElementById("fizyczna").checked = false;
+	document.getElementById("radar-background").src = "./images/polska.png";
+  } }
+  
+
+  function loop_check() {
+	
+  if (petla.checked == true){
+  document.getElementById("petla").checked = true;
+  } else {
+  document.getElementById("petla").checked = false;
+  } }
+  
+  function speed_check() {
+	
+  if (szybko.checked == true){
+  document.getElementById("szybko").checked = true;
+  } else {
+  document.getElementById("szybko").checked = false;
+  } }
+  
+
+	var linkScan = `http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/p0`;
+	var linkScanq = `http://awiacja.imgw.pl/mapa-burz-rad/_burzrad_p3/q0`;
+	var g = `.gif`;
+	
+		
+	function Scan(imgsrc){
+		im = new Image();
+		im.src = imgsrc;
+		return im;
+	}
+
+	function zero(i) {
+		return (i < 10)? '0'+i : i;
+	}
+	
+	
+var round = 1000 * 60 * 10;
+var date = new Date()
+var rounded = new Date(Math.floor(date.getTime() / round) * round)
+
+var element = document.getElementById('full_date')
+ 
+	element.innerHTML += "" + zero(date.getDate()) + "." + zero(date.getMonth()+1) + "." + date.getFullYear();  
+
+var sTime = 60000;
+var data_start_skan = document.getElementById('data_start')
+data_start_skan.innerHTML = new Date(rounded).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+	function Player(){
+	
+	
+		this.paused = true;
+		this.delay = false;
+		this.current = 30;
+		this.ivID;
+			
+			skany_radar = new Array({'time':null, 'image':null},
+			{'time':new Date(rounded - sTime * 290 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'00'+g)},
+			{'time':new Date(rounded - sTime * 280 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'01'+g)},
+			{'time':new Date(rounded - sTime * 270 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'02'+g)},
+			{'time':new Date(rounded - sTime * 260 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'03'+g)},
+			{'time':new Date(rounded - sTime * 250 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'04'+g)},
+			{'time':new Date(rounded - sTime * 240 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'05'+g)},
+			{'time':new Date(rounded - sTime * 230 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'06'+g)},
+			{'time':new Date(rounded - sTime * 220 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'07'+g)},
+			{'time':new Date(rounded - sTime * 210 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'08'+g)},
+			{'time':new Date(rounded - sTime * 200 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'09'+g)},
+			{'time':new Date(rounded - sTime * 190 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'10'+g)},
+			{'time':new Date(rounded - sTime * 180 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'11'+g)},
+			{'time':new Date(rounded - sTime * 170 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'12'+g)},
+			{'time':new Date(rounded - sTime * 160 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'13'+g)},
+			{'time':new Date(rounded - sTime * 150 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'14'+g)},
+			{'time':new Date(rounded - sTime * 140 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'15'+g)},
+			{'time':new Date(rounded - sTime * 130 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'16'+g)},
+			{'time':new Date(rounded - sTime * 120 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'17'+g)},
+			{'time':new Date(rounded - sTime * 110 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'18'+g)},
+			{'time':new Date(rounded - sTime * 100 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'19'+g)},
+			{'time':new Date(rounded - sTime * 90  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'20'+g)},
+			{'time':new Date(rounded - sTime * 80  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'21'+g)},
+			{'time':new Date(rounded - sTime * 70  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'22'+g)},
+			{'time':new Date(rounded - sTime * 60  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'23'+g)},
+			{'time':new Date(rounded - sTime * 50  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'24'+g)},
+			{'time':new Date(rounded - sTime * 40  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'25'+g)},
+			{'time':new Date(rounded - sTime * 30  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'26'+g)},
+			{'time':new Date(rounded - sTime * 20  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'27'+g)},
+			{'time':new Date(rounded - sTime * 10  ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'28'+g)},
+			{'time':new Date(rounded).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScan+'29'+g)},
+			{'time':null, 'image':null}
+		);
+		
+
+		
+		
+		this.play = function(param){
+		
+		if (piorun.checked == true) {
+			skany_piorun = new Array({'time':null, 'image':null},
+			{'time':new Date(rounded - sTime * 290 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'00'+g)},
+			{'time':new Date(rounded - sTime * 280 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'01'+g)},
+			{'time':new Date(rounded - sTime * 270 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'02'+g)},
+			{'time':new Date(rounded - sTime * 260 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'03'+g)},
+			{'time':new Date(rounded - sTime * 250 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'04'+g)},
+			{'time':new Date(rounded - sTime * 240 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'05'+g)},
+			{'time':new Date(rounded - sTime * 230 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'06'+g)},
+			{'time':new Date(rounded - sTime * 220 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'07'+g)},
+			{'time':new Date(rounded - sTime * 210 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'08'+g)},
+			{'time':new Date(rounded - sTime * 200 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'09'+g)},
+			{'time':new Date(rounded - sTime * 190 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'10'+g)},
+			{'time':new Date(rounded - sTime * 180 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'11'+g)},
+			{'time':new Date(rounded - sTime * 170 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'12'+g)},
+			{'time':new Date(rounded - sTime * 160 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'13'+g)},
+			{'time':new Date(rounded - sTime * 150 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'14'+g)},
+			{'time':new Date(rounded - sTime * 140 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'15'+g)},
+			{'time':new Date(rounded - sTime * 130 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'16'+g)},
+			{'time':new Date(rounded - sTime * 120 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'17'+g)},
+			{'time':new Date(rounded - sTime * 110 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'18'+g)},
+			{'time':new Date(rounded - sTime * 100 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'19'+g)},
+			{'time':new Date(rounded - sTime * 90 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'20'+g)},
+			{'time':new Date(rounded - sTime * 80 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'21'+g)},
+			{'time':new Date(rounded - sTime * 70 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'22'+g)},
+			{'time':new Date(rounded - sTime * 60 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'23'+g)},
+			{'time':new Date(rounded - sTime * 50 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'24'+g)},
+			{'time':new Date(rounded - sTime * 40 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'25'+g)},
+			{'time':new Date(rounded - sTime * 30 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'26'+g)},
+			{'time':new Date(rounded - sTime * 20 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'27'+g)},
+			{'time':new Date(rounded - sTime * 10 ).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'28'+g)},
+			{'time':new Date(rounded).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 'image':new Scan(linkScanq+'29'+g)},
+			{'time':null, 'image':null}	);
+		
+			this.radars = skany_piorun;
+		
+		} else  this.radars = skany_radar;
+		
+
+			
+			if (this.delay == true){
+					this.delay = false;
+					window.clearInterval(this.ivID);
+					this.ivID = window.setInterval(playFc, 300);
+			}
+
+			if (param==-1) this.current--; else this.current++;
+			if (this.current==0) this.current = 1;
+			if (this.radars[this.current].time==null) {
+				if ((param!=1)&&(param!=-1)){
+					this.current = 1;
+				} else this.current--;
+			}
+			
+			
+			document.getElementById('radar').src = this.radars[this.current].image.src;
+			document.getElementById('radar').alt = this.radars[this.current].image.alt;
+			
+			document.getElementById('timetext').innerHTML = this.radars[this.current].time;
+			
+			
+
+			if ((param!=1)&&(param!=-1)){
+				if (this.paused==true){
+					if (szybko.checked == false) 
+						this.ivID = window.setInterval(playFc, 300);  //slow
+					 else this.ivID = window.setInterval(playFc, 80); //fast 
+						
+					this.paused = false;
+				} else {
+					if (petla.checked == false) {
+						if (this.radars[this.current + 1].time==null) this.pushEvent();   //loop stop
+					} else { 
+						if (this.radars[this.current + 1].time==8) this.pushEvent();   //loop all time
+					}
+				}
+			}
+			
+			
+		}
+		this.pushEvent = function(){  
+			if (this.paused==true){
+				this.play();
+				document.getElementById('pushButton').innerHTML = 'pauza ▌▌';
+			} else {
+				window.clearInterval(this.ivID);
+				this.paused = true;
+				document.getElementById('pushButton').innerHTML = 'odtwarzaj ►';
+			}
+		}
+		
+			this.makeStep = function(param){
+			this.paused = false;
+			this.pushEvent();
+			this.play(param);
+			
+		}
+	}
+	playerObject = new Player();
+	function playFc(){
+		
+		playerObject.play();
+	};
+
+function pioruny_load() {	
+
+}
+	
+</script>
+
+	
+		 </div>
+			<div id="m_bottom">
+				<br> <h4> MiniRadar <div id="rok"></div>
+				<script type="text/javascript">	   
+ 
+					var year = new Date();
+					var element = document.getElementById('rok')
+ 
+					element.innerHTML = year.getFullYear();  
+
+
+				</script>
+
+				
+			</h4>
+			<br>
+			</div>
+	   </div>
+  
+	
+</body></html>
