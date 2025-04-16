@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="robots" content="all">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="Viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="Description" content="MiniRadar">
+    <meta name="Keywords" content="altamedia">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/apple_icon.png">
+    <title>Radar</title>
+    
+<style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, Arial;
+        }
+        #m_main{
+            width: 100%;
+        }   
+        
+        #top_date{
+            float: right;
+            padding-right: 5px;
+            padding-top: 7px;
+        }
+        
+        
+
+        #m_top{
+            background-color: #555c63;
+            height: 30px;
+           
+        }
+        
+        #m_menu{
+            height: 25px;
+            background-color: #b3b5b8;
+        }
+        
+        #menu_1{
+            background-color: #cdd1d4;
+            float: left;
+            width: 20%;
+            height: 100%;
+        }
+        
+        #menu_2{
+            float: left;
+            width: 40%;
+            height: 100%;
+        }
+        
+        #menu_3{
+            background-color: #b4b4b4;
+            float: left;
+            width: 20%;
+            height: 10%;
+        }
+        
+       
+        
+        .menu_1_text{
+            padding-top: 15px;
+        }
+        
+        .menu_2_text{
+            padding-top: 5px;
+        }
+        
+        .menu_3_text{
+            padding-top: 5px;
+        }
+        
+        .menu_text{
+            padding-left: 8px;
+            height: 100%;
+            vertical-align: middle;
+            display: block;
+            text-decoration: none;
+            color: white;
+   
+        }
+      
+        #m_bottom{
+            background-color: #555c63;
+            width: 100%;
+            height: 10px;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .whitetime_font_1{
+            font-size: 12px;
+            color: #ffffff;
+        }
+        
+        .whitetime_font_2{
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+       
+           
+        #m_radarplayer{
+            height: 30px;
+            width: 100%;
+        }
+        
+        .m_rp_play{
+            background-color: #c4e944;
+            width: 40%;
+            text-align: center; 
+        }
+        
+        .m_rp_rewindleft{
+            background-color: #82d318;
+            width: 8%;
+            text-align: center; 
+        }
+        
+        .m_rp_rewindright{
+            background-color: #4ab124;
+            width: 8%;
+            text-align: center; 
+        }
+        
+        .m_rp_label{
+            width: 44%;
+            text-align: center; 
+            color: black;
+        }
+
+      
+        
+        .m_rp_sub{
+             float: left;
+             height: 100%;
+        }
+        
+        .m_rp_item{
+            padding-top: 6px;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        
+        .text_white {
+            color: white;
+        }
+        
+        .logo{
+            padding-left: 5px;
+            padding-top: 5px;
+            float: left;
+            font-weight: bold;
+            color: white;
+            font-size: 18px;
+        }
+        
+        #radar-container{
+            width: 100%;
+            position: relative;
+        }
+
+        .radar-lay0 {
+            z-index: 50;
+        }
+
+
+        .radar-lay1{
+            z-index: 99;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .radar-space{
+            width: 100%;
+            clear: both;
+        }
+
+        .color1 {
+            color: #0000c0;
+        }
+        
+        .dot {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .dot1 {
+            background-color: #0000c0;
+        }
+        .dot2 {
+            background-color: #0078ff;
+        }
+        .dot3 {
+            background-color: #50d0ff;
+        }
+        .dot4 {
+            background-color: #ffffff;
+        }
+        .dot5 {
+            background-color: #ffe000;
+        }
+        .dot6 {
+            background-color: #ff7000;
+        }
+        .dot7 {
+            background-color: #800000;
+        }
+
+        input.largerCheckbox {
+            transform : scale(1.5);
+            float: right;
+            margin: 4px 20px;
+        }
+    
+        label {
+            cursor: pointer;
+        }
+		
+		.radio {
+		display: inline-flex;
+		overflow: hidden;
+		box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+		width: 100%;
+		}
+		
+		.radio__input {
+		    display: none;
+            }
+
+        .checkbox__input {
+            display: none;
+            }
+		
+		.radio__label {
+			padding: 5px 10px;
+			font-size: 14px;
+			font-family: Sans-serif;
+			color: #ffffff;
+			cursor: pointer;
+			transition: background 0.1s;
+			}
+
+        .radio__40b{
+            width: 80%;
+            background: #ababab;
+        }
+        
+        .radio__40 {
+            width: 80%;
+			background: #a4a4a4;
+            }
+
+        .radio__20 {
+            width: 20%;
+            }
+
+        .radio__10 {
+            width: 65%;
+            }
+            
+        .radio__20b {
+            float: right;
+        }
+			
+		.radio__label:not(:first-of-type) {
+			border-left: 0px solid #4ab124;
+			}
+			
+		.radio__input:checked + .radio__label {
+			background: #4ab124;
+			}
+        .radar_icontext {
+        padding: 2px 1px;
+        float: right;
+        font-size: 10px;
+        font-family: Arial;
+        color: #c4e944;
+        font-weight: bold;
+        }
+</style>
+    
+</head>
+
+<body>
+    
+            
+
+     <div id="m_main">
+<div id="dane">
+           
+
+                <div id="m_top">
+                    <div class="logo">MiniRadar <span class="dot dot1"></span> <span class="dot dot2"></span> <span class="dot dot3"></span> <span class="dot dot4"></span> <span class="dot dot5"></span> <span class="dot dot6"></span> <span class="dot dot7"></span></div>
+                    <span id="top_date" class="whitetime_font_1"><div id="full_date"></div>
+ 
+                </div>
+				
+<div id="m_menu" class="radio">
+
+                    <input id="cmax" class="radio__input" type="radio" name="radarclick" onclick="radar_checked()" checked>
+					<label class="radio__label radio__40" for="cmax">Odbiciowość max<p class="radar_icontext">CMAX</p></label>
+					<input id="sri" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
+					<label class="radio__label radio__40b" for="sri">Natężenie opadu<p class="radar_icontext">SRI</p></label>
+					<input id="szybko" type="checkbox" name="szybko" class="radio__input" onclick="radar_checked()">&nbsp;&nbsp;
+					<label class="radio__label radio__20" for="szybko"><p class="radio__20b">►&nbsp;&nbsp;x4</p></label>
+
+                    
+
+                </div>
+                <div id="m_menu" class="radio">
+
+                    <input id="cappi" class="radio__input" type="radio" name="radarclick" onclick="radar_checked()">
+					<label class="radio__label radio__40" for="cappi">Odbiciowość 1km<p class="radar_icontext">CAPPI</p></label>
+					<input id="pac" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
+					<label class="radio__label radio__40b" for="pac">Suma Opadu 1h<p class="radar_icontext">PAC</p></label>
+					<input id="petla" type="checkbox" name="petla" class="radio__input" onclick="radar_checked()">&nbsp;&nbsp;
+					<label class="radio__label radio__20" for="petla"><p class="radio__20b">►&nbsp;&nbsp;&nbsp;↻</p></label>
+
+                    
+
+                </div>
+
+                <div id="m_menu" class="radio">
+
+                    <input id="eht" class="radio__input" type="radio" name="radarclick" onclick="radar_checked()">
+					<label class="radio__label radio__40" for="eht">Wysokość chmur<p class="radar_icontext">EHT</p></label>
+					<input id="zhail" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
+					<label class="radio__label radio__10" for="zhail">Grad<p class="radar_icontext">ZHAIL</p></label>
+                    <select id="mapa" onchange="maps()">
+                        <option value="images/mapadal2.png">Jasna IMGW</option>
+                        <option value="images/mapadal4.png">Ciemna IMGW</option>
+                        <option value="images/mapamapz.jpg">Prosta</option>
+                        <option value="images/applemap.jpg">Apple Maps</option>
+                      </select>
+
+
+
+					<!--<input id="map" type="checkbox" name="map" class="radio__input" onclick="radar_checked()">&nbsp;&nbsp;
+					<label class="radio__label radio__20" for="map"><p class="radio__20b">Mapy</p></label>-->
+
+                    
+
+                </div>
+                
+               
+
+                
+				
+				
+                    
+                    
+            
+              
+        
+    
+    
+    <div id="radar-container">
+        <img class="radar-lay0" width="100%" id="radar-background" src="./images/mapadal2.png">
+        
+    
+        <img class="radar-lay1" width="100%" id="radar" alt="" src="images/apple_icon.png">
+        <div class="radar-space"></div>
+    </div>
+
+
+        <div id="m_radarplayer">
+               
+                <div class="m_rp_play m_rp_sub" onclick="playerObject.pushEvent();return false;">
+                    <span id="pushButton" class="m_rp_item text_white">odtwarzaj ►</span>
+                </div>
+                
+                <a id="prevRadar" onclick="playerObject.makeStep(-1);return false;" href="">
+                
+                    <div id="prevB" class="m_rp_rewindleft m_rp_sub">
+                         <span class="m_rp_item text_white">◄◄</span>
+                    </div>
+                </a>
+                
+                 <div class="m_rp_label m_rp_sub">
+                    <span class="m_rp_item"><span id="timetext" class="cust_lab"><div id="data_start"></div></span></span>
+                </div>  
+                    
+                <a id="nextRadar" onclick="playerObject.makeStep(1);return false;" href="">
+                    <div id="nextB" class="m_rp_rewindright m_rp_sub">
+                        <span class="m_rp_item text_white">►►</span>
+                    </div> 
+                </a>
+            </div>
+
+
+
+
+<script type="text/javascript">
+
+
+    function zero(i) {
+        return (i < 10)? '0'+i : i;
+    }
+    
+    
+var round = 1000 * 60 * 10;
+var date = new Date()
+var rounded = new Date(Math.floor(date.getTime() / round) * round)
+
+var element = document.getElementById('full_date')
+ 
+    element.innerHTML += "" + zero(date.getDate()) + "." + zero(date.getMonth()+1) + "." + date.getFullYear();  
+
+
+var data_start_skan = document.getElementById('data_start')
+
+
+const cmaxUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cmax';
+const cappiUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cappi';
+const ehtUrl = 'https://meteo.imgw.pl/api/radars/v1/list/eht';
+const sriUrl = 'https://meteo.imgw.pl/api/radars/v1/list/sri';
+const pacUrl = 'https://meteo.imgw.pl/api/radars/v1/list/pac';
+const zhailUrl = 'https://meteo.imgw.pl/api/radars/v1/list/zhail';
+
+var radar_check = cmaxUrl; // Domyślny URL to cmax
+
+let tablica2 = [];
+let tablica = []; // Zmieniono na []
+let cmaxData = null; 
+let cappiData = null; 
+let ehtData = null;
+let sriData = null;
+let pacData = null;
+let zhailData = null;
+let playerObject = null; // Dodano inicjalizację playera
+
+
+function radar_checked() {
+    if (document.getElementById('cappi').checked) {
+        radar_check = cappiUrl;
+        tablica = tablica2; 
+        if (cappiData === null) {
+            pobierzDane(); 
+        } else {
+            przetworzDane(cappiData); 
+        }
+    } else if (document.getElementById('cmax').checked) {
+        radar_check = cmaxUrl;
+        tablica = tablica2; 
+        if (cmaxData === null) {
+            pobierzDane(); 
+        } else {
+            przetworzDane(cmaxData); 
+        }
+    } else if (document.getElementById('eht').checked) {
+        radar_check = ehtUrl;
+        tablica = tablica2; // Poprawiono na tablica2, zakladam ze chcesz uzywac tej samej tablicy
+        if (ehtData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(ehtData);
+        }
+    } else if (document.getElementById('sri').checked) {
+        radar_check = sriUrl;
+        tablica = tablica2;
+        if (sriData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(sriData);
+        }
+    } else if (document.getElementById('pac').checked) {
+        radar_check = pacUrl;
+        tablica = tablica2;
+        if (pacData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(pacData);
+        }
+    } else if (document.getElementById('zhail').checked) {
+        radar_check = zhailUrl;
+        tablica = tablica2;
+        if (zhailData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(zhailData);
+        }
+    }
+}
+
+function maps()
+{
+var obj1= document.getElementById("radar-background");
+var obj2= document.getElementById("mapa");
+obj1.src=obj2.value;
+}
+
+
+var lista;
+
+// Funkcja do pobierania danych
+async function pobierzDane() {
+    try {
+        var odpowiedz = await fetch(radar_check);
+        if (!odpowiedz.ok) {
+            throw new Error(`Błąd HTTP! status: ${odpowiedz.status}`);
+        } 
+        var dane = await odpowiedz.json();
+        // Zapisz pobrane dane
+        if (radar_check === cmaxUrl) {
+            cmaxData = dane;
+        } else if (radar_check === cappiUrl) {
+            cappiData = dane;
+        } else if (radar_check === ehtUrl) {
+            ehtData = dane;
+        } else if (radar_check === sriUrl) {
+            sriData = dane;
+        } else if (radar_check === pacUrl) {
+            pacData = dane;
+        } else if (radar_check === zhailUrl) {
+            zhailData = dane;
+        }
+        przetworzDane(dane);
+    } catch (error) {
+        console.error('Wystąpił błąd:', error);
+    }
+}
+
+
+function przetworzDane(dane) {
+    
+    const maxElementy = 84;
+    tablica = []; // Wyczyść tablicę przed dodaniem nowych danych
+    tablica.push({ time: null, image: null });
+
+    let lista;
+     if (radar_check === cmaxUrl) {
+        lista = dane.cmax.list;
+    } else if (radar_check === cappiUrl) {
+        lista = dane.cappi.list;
+    } else if (radar_check === ehtUrl) {
+        lista = dane.eht.list;
+    } else if (radar_check === sriUrl) {
+        lista = dane.sri.list;
+    } else if (radar_check === pacUrl) {
+        lista = dane.pac.list;
+    } else if (radar_check === zhailUrl) {
+        lista = dane.zhail.list;
+    }
+
+    lista.forEach(element => {
+        var dataObrazu = new Date(element.date * 1000);
+        var czasHHMM = `${String(dataObrazu.getHours()).padStart(2, '0')}:${String(dataObrazu.getMinutes()).padStart(2, '0')}`;
+        var imageUrl = element.url;
+        if (tablica.length < maxElementy) {
+            tablica.push({ time: czasHHMM, image: imageUrl });
+        }
+    });
+    tablica.push({ time: null, image: null });
+
+    // Utwórz instancję playera i rozpocznij odtwarzanie po przetworzeniu danych
+    if (!playerObject) {
+        playerObject = new Player(tablica); // Inicjalizacja playera z aktualnymi danymi tylko raz
+    }
+    else{
+        playerObject.radars = tablica; // Aktualizuj dane w istniejącym playerze
+    }
+	
+	var ostatniObraz = tablica[tablica.length - 2];
+    if (ostatniObraz && ostatniObraz.image) {
+        var obrazElement = document.getElementById('radar');
+        obrazElement.src = ostatniObraz.image;
+        var czasElement = document.getElementById('data_start');
+        // Dodaj sprawdzenie, czy element istnieje
+        if (czasElement) {
+            czasElement.textContent = ostatniObraz.time;
+        }
+    }
+	console.log(tablica);
+}
+
+// Pobierz dane cmax na początku
+pobierzDane();  
+
+function Player(radars) {
+    this.paused = true;
+    this.delay = false;
+    this.current = 83;
+    this.ivID;
+    this.radars = radars;
+
+    this.play = function (param) {
+        if (!this.radars || this.radars.length === 0) {
+            console.warn("Player.play called with empty or undefined radars array.");
+            return;
+        }
+
+        if (this.delay == true) {
+            this.delay = false;
+            window.clearInterval(this.ivID);
+            this.ivID = window.setInterval(playFc, 300);
+        }
+
+        if (param == -1) this.current--; else this.current++;
+
+        if (this.current < 1) this.current = 1;
+        if (this.current >= this.radars.length) this.current = this.radars.length - 2;
+        if (this.radars[this.current] === undefined || this.radars[this.current].time == null) {
+            if ((param != 1) && (param != -1)) {
+                this.current = 1;
+            } else this.current--;
+        }
+
+
+        let radarElement = document.getElementById('radar');
+        let timetextElement = document.getElementById('timetext');
+
+        if(this.radars[this.current] && radarElement && timetextElement){
+            radarElement.src = this.radars[this.current].image;
+            radarElement.alt = this.radars[this.current].time;
+            timetextElement.innerHTML = this.radars[this.current].time;
+        }
+
+
+        if ((param != 1) && (param != -1)) {
+            if (this.paused == true) {
+                if (szybko.checked == false)
+                    this.ivID = window.setInterval(playFc, 300);  //slow
+                else this.ivID = window.setInterval(playFc, 80); //fast
+
+                this.paused = false;
+            } else {
+                if (petla.checked == false) {
+                    if (this.radars[this.current + 1] === undefined || this.radars[this.current+1].time == null)
+                         this.pushEvent();
+                }
+            }
+        }
+    }
+
+    this.pushEvent = function () {
+        if (this.paused == true) {
+            this.play();
+            document.getElementById('pushButton').innerHTML = 'pauza ▌▌';
+        } else {
+            window.clearInterval(this.ivID);
+            this.paused = true;
+            document.getElementById('pushButton').innerHTML = 'odtwarzaj ►';
+        }
+    }
+
+    this.makeStep = function (param) {
+        this.paused = false;
+        this.pushEvent();
+        this.play(param);
+    }
+}
+
+
+function playFc() {
+    playerObject.play();
+}
+
+
+
+</script>
+
+
+        </div>
+            <div id="m_bottom">
+                <br> <h4> MiniRadar <div id="rok"></div>
+				
+                <script type="text/javascript">     
+				var year = document.getElementById('rok')
+				year.innerHTML = date.getFullYear(); 
+				</script>
+
+                
+            </h4>
+            <br>
+            </div>
+       </div>
+  
+    
+</body></html>
