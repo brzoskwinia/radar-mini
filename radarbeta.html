@@ -255,17 +255,17 @@
 			}
 
         .radio__40b{
-            width: 80%;
+            width: 50%;
             background: #ababab;
         }
         
         .radio__40 {
-            width: 80%;
+            width: 50%;
 			background: #a4a4a4;
             }
 
         .radio__20 {
-            width: 20%;
+            width: 10%;
             }
 
         .radio__10 {
@@ -273,11 +273,11 @@
             }
             
         .radio__20b {
-            float: right;
+            float: center;
         }
 			
-		.radio__label:not(:first-of-type) {
-			border-left: 0px solid #4ab124;
+		.radio__20 {
+			border-left: 5px solid #555c63;
 			}
 			
 		.radio__input:checked + .radio__label {
@@ -315,9 +315,7 @@
 					<label class="radio__label radio__40" for="cmax">Odbiciowość max<p class="radar_icontext">CMAX</p></label>
 					<input id="sri" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
 					<label class="radio__label radio__40b" for="sri">Natężenie opadu<p class="radar_icontext">SRI</p></label>
-					<input id="szybko" type="checkbox" name="szybko" class="radio__input" onclick="radar_checked()">&nbsp;&nbsp;
-					<label class="radio__label radio__20" for="szybko"><p class="radio__20b">►&nbsp;&nbsp;x4</p></label>
-
+					
                     
 
                 </div>
@@ -327,9 +325,7 @@
 					<label class="radio__label radio__40" for="cappi">Odbiciowość 1km<p class="radar_icontext">CAPPI</p></label>
 					<input id="pac" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
 					<label class="radio__label radio__40b" for="pac">Suma Opadu 1h<p class="radar_icontext">PAC</p></label>
-					<input id="petla" type="checkbox" name="petla" class="radio__input" onclick="radar_checked()">&nbsp;&nbsp;
-					<label class="radio__label radio__20" for="petla"><p class="radio__20b">►&nbsp;&nbsp;&nbsp;↻</p></label>
-
+					
                     
 
                 </div>
@@ -339,19 +335,9 @@
                     <input id="eht" class="radio__input" type="radio" name="radarclick" onclick="radar_checked()">
 					<label class="radio__label radio__40" for="eht">Wysokość chmur<p class="radar_icontext">EHT</p></label>
 					<input id="zhail" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
-					<label class="radio__label radio__10" for="zhail">Grad<p class="radar_icontext">ZHAIL</p></label>
-                    <select id="mapa" onchange="maps()">
-                        <option value="images/mapadal2.png">Jasna IMGW</option>
-                        <option value="images/mapadal4.png">Ciemna IMGW</option>
-                        <option value="images/mapamapz.jpg">Prosta</option>
-                        <option value="images/applemap.jpg">Apple Maps</option>
-                        <option value="images/fizyczna.jpg">Fizyczna</option>
-                      </select>
+					<label class="radio__label radio__40b" for="zhail">Grad<p class="radar_icontext">ZHAIL</p></label>
+                    
 
-
-
-					<!--<input id="map" type="checkbox" name="map" class="radio__input" onclick="radar_checked()">&nbsp;&nbsp;
-					<label class="radio__label radio__20" for="map"><p class="radio__20b">Mapy</p></label>-->
 
                     
 
@@ -401,6 +387,29 @@
                     </div> 
                 </a>
             </div>
+            <div id="m_bottom">
+                <br><br><div id="m_menu" class="radio">
+                    <input id="szybko" type="checkbox" name="szybko" class="radio__input" onclick="radar_checked()">
+					<label class="radio__label radio__20" for="szybko"><p class="radio__20b">►&nbsp;x4</p></label>
+                    <input id="petla" type="checkbox" name="petla" class="radio__input" onclick="radar_checked()">
+					<label class="radio__label radio__20" for="petla"><p class="radio__20b">►&nbsp;↻</p></label>
+                    <input id="powieksz" type="checkbox" name="powieksz" class="radio__input" onclick="powieksz()">
+					<label class="radio__label radio__20" for="powieksz"><p class="radio__20b">🔍︎</p></label>
+                    <input id="pobierzskan" type="checkbox" name="pobierzskan" class="radio__input" onclick="radar_checked()">
+					<label class="radio__label radio__20" for="pobierzskan"><p class="radio__20b" style="font-size:16px;">⤓</p></label>
+                    <label class="radio__label radio__20"><p class="radio__20b">Mapa:</p></label>
+                    <select id="mapa" onchange="maps()">
+                        <option value="images/mapadal2.png">Jasna IMGW</option>
+                        <option value="images/mapadal4.png">Ciemna IMGW</option>
+                        <option value="images/mapamapz.jpg">Prosta</option>
+                        <option value="images/applemap.jpg">Apple Maps</option>
+                        <option value="images/fizyczna.jpg">Fizyczna</option>
+                      </select>&nbsp;&nbsp;
+
+                </div>
+
+
+            </div>
 
 
 
@@ -443,6 +452,7 @@ let sriData = null;
 let pacData = null;
 let zhailData = null;
 let playerObject = null; // Dodano inicjalizację playera
+let powiekszony = false;
 
 
 function radar_checked() {
@@ -503,6 +513,21 @@ var obj1= document.getElementById("radar-background");
 var obj2= document.getElementById("mapa");
 obj1.src=obj2.value;
 }
+
+function powieksz() {
+    const r_lay0 = document.getElementById('radar-background');
+    const r_lay1 = document.getElementById('radar');
+    if (powiekszony) {
+        r_lay0.style.width = '100%';
+        r_lay1.style.width = '100%';
+        powiekszony = false;
+    } else {
+        r_lay0.style.width = '1000px';
+        r_lay1.style.width = '1000px';
+        powiekszony = true;
+    }
+}
+
 
 
 var lista;
