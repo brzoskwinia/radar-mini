@@ -291,6 +291,32 @@
         color: #c4e944;
         font-weight: bold;
         }
+
+        #powieksz_container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .powieksz_label {
+            background-color: #4ab124;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-family: Sans-serif;
+            cursor: pointer;
+        }
+        
+        .powieksz_input {
+            display: none;
+        }
+        
+        .powieksz_input:checked + .powieksz_label {
+            background-color: #555c63;
+            }
+
+
 </style>
     
 </head>
@@ -393,10 +419,14 @@
 					<label class="radio__label radio__20" for="szybko"><p class="radio__20b">►&nbsp;x4</p></label>
                     <input id="petla" type="checkbox" name="petla" class="radio__input" onclick="radar_checked()">
 					<label class="radio__label radio__20" for="petla"><p class="radio__20b">►&nbsp;↻</p></label>
-                    <input id="powieksz" type="checkbox" name="powieksz" class="radio__input" onclick="powieksz()">
-					<label class="radio__label radio__20" for="powieksz"><p class="radio__20b">🔍︎</p></label>
-                    <input id="pobierzskan" type="checkbox" name="pobierzskan" class="radio__input" onclick="radar_checked()">
-					<label class="radio__label radio__20" for="pobierzskan"><p class="radio__20b" style="font-size:16px;">⤓</p></label>
+                    
+                    <input id="powieksz_sterujacy" type="checkbox" name="powieksz_sterujacy" class="radio__input" onclick="obslugaPowieksz(this)">
+					<label class="radio__label radio__20" for="powieksz_sterujacy"><p class="radio__20b">🔍︎</p></label>
+					<div id="powieksz_container" style="display: none;">
+					<input id="powieksz" type="checkbox" name="powieksz" class="radio__input" onclick="obslugaPowieksz(this)">
+					<label class="powieksz_label" for="powieksz">-&nbsp;🔍︎</label>
+					</div>
+					
                     <label class="radio__label radio__20"><p class="radio__20b">Mapa:</p></label>
                     <select id="mapa" onchange="maps()">
                         <option value="images/mapadal2.png">Jasna IMGW</option>
@@ -509,22 +539,54 @@ function radar_checked() {
 
 function maps()
 {
-var obj1= document.getElementById("radar-background");
-var obj2= document.getElementById("mapa");
-obj1.src=obj2.value;
+    var obj2= document.getElementById("mapa");
+    localStorage.setItem('selectedMap', obj2.value);
+    View_map();
 }
 
-function powieksz() {
+window.onload = function() {
+    View_map();
+};
+
+function View_map() {
+    var choseMap = localStorage.getItem('selectedMap');
+    if (choseMap) {
+        var mapaSelect = document.getElementById('mapa');
+        mapaSelect.value = choseMap;
+        var obj1 = document.getElementById("radar-background");
+        obj1.src = choseMap;
+    }
+}
+
+function zmienRozmiarRadaru(element) {
     const r_lay0 = document.getElementById('radar-background');
     const r_lay1 = document.getElementById('radar');
-    if (powiekszony) {
-        r_lay0.style.width = '100%';
-        r_lay1.style.width = '100%';
-        powiekszony = false;
-    } else {
+
+    if (element.checked) {
         r_lay0.style.width = '1000px';
         r_lay1.style.width = '1000px';
-        powiekszony = true;
+    } else {
+        r_lay0.style.width = '100%';
+        r_lay1.style.width = '100%';
+    }
+}
+
+function obslugaPowieksz(element) {
+    const powiekszContainer = document.getElementById('powieksz_container');
+    const powiekszInput = document.getElementById('powieksz');
+    const powiekszSterujacy = document.getElementById('powieksz_sterujacy');
+
+    if (element.checked) {
+        powiekszContainer.style.display = 'block';
+        powiekszInput.checked = true; // Zaznacz podręczny
+        zmienRozmiarRadaru(powiekszInput); // Zmień rozmiar
+    } else {
+        powiekszContainer.style.display = 'none';
+        powiekszInput.checked = false; // Odznacz podręczny
+        zmienRozmiarRadaru(powiekszInput); // Zmień rozmiar
+        if (element.id === 'powieksz') { // Dodano warunek
+            powiekszSterujacy.checked = false; // Odznacz główny
+        }
     }
 }
 
