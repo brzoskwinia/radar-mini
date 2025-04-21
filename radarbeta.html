@@ -302,19 +302,14 @@
         .powieksz_label {
             background-color: #4ab124;
             color: white;
-            padding: 5px 10px;
-            font-size: 14px;
-            font-family: Sans-serif;
+            padding: 12px 8px 6px 6px;
             cursor: pointer;
+            opacity: 0.9;
         }
         
         .powieksz_input {
             display: none;
         }
-        
-        .powieksz_input:checked + .powieksz_label {
-            background-color: #555c63;
-            }
 
 
 </style>
@@ -330,7 +325,10 @@
            
 
                 <div id="m_top">
-                    <div class="logo">MiniRadar <span class="dot dot1"></span> <span class="dot dot2"></span> <span class="dot dot3"></span> <span class="dot dot4"></span> <span class="dot dot5"></span> <span class="dot dot6"></span> <span class="dot dot7"></span></div>
+                    <div class="logo">MiniRadar 
+                       
+<svg version="1.1" width="80" height="20" viewBox="443,213.81405,650,258.68595"><g id="document" fill="none"><rect x="477.07692" y="445" transform="scale(0.92857,0.5)" width="700" height="500" id="Shape 1 1" vector-effect="non-scaling-stroke"/></g><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g id="stage"><g id="layer1 1"><path d="M457.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#a80000" stroke="#a80000"/><path d="M532.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#ff7500" stroke="#ff7500"/><path d="M604.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#ffffff" stroke="#ffffff"/><path d="M677.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#63c6ff" stroke="#63c6ff"/><path d="M748.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#1000f0" stroke="#1000f0"/></g></g></g></svg>
+                        <span class="dot dot1"></span> <span class="dot dot2"></span> <span class="dot dot3"></span> <span class="dot dot4"></span> <span class="dot dot5"></span> <span class="dot dot6"></span> <span class="dot dot7"></span></div>
                     <span id="top_date" class="whitetime_font_1"><div id="full_date"></div>
  
                 </div>
@@ -414,27 +412,39 @@
                 </a>
             </div>
             <div id="m_bottom">
-                <br><br><div id="m_menu" class="radio">
+                <p style="text-align: right; font-size: 14px; margin-bottom: -10px; padding-top: 7px;">Mapa:&nbsp;&nbsp;</p>
+                <br>
+                <div id="m_menu" class="radio">
+                    <input id="first_scan" type="button" name="first_scan" class="radio__input" onclick="goToScan(-84)">
+					<label class="radio__label radio__20" style="background: #82d318" for="first_scan"><p class="radio__20b">l◄                    </p></label>
+                    <input id="now_scan" type="button" name="now_scan" class="radio__input" onclick="goToScan(-2)">
+					<label class="radio__label radio__20" style="background: #82d318" for="now_scan"><p class="radio__20b">►l</p></label>
                     <input id="szybko" type="checkbox" name="szybko" class="radio__input" onclick="radar_checked()">
 					<label class="radio__label radio__20" for="szybko"><p class="radio__20b">►&nbsp;x4</p></label>
                     <input id="petla" type="checkbox" name="petla" class="radio__input" onclick="radar_checked()">
 					<label class="radio__label radio__20" for="petla"><p class="radio__20b">►&nbsp;↻</p></label>
                     
                     <input id="powieksz_sterujacy" type="checkbox" name="powieksz_sterujacy" class="radio__input" onclick="obslugaPowieksz(this)">
-					<label class="radio__label radio__20" for="powieksz_sterujacy"><p class="radio__20b">🔍︎</p></label>
+					<label class="radio__label radio__20" for="powieksz_sterujacy"><p class="radio__20b">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                        <path d="M15.8053 15.8013L21 21M10.5 7.5V13.5M7.5 10.5H13.5M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></p></label>
 					<div id="powieksz_container" style="display: none;">
 					<input id="powieksz" type="checkbox" name="powieksz" class="radio__input" onclick="obslugaPowieksz(this)">
-					<label class="powieksz_label" for="powieksz">-&nbsp;🔍︎</label>
+					<label class="powieksz_label" for="powieksz">
+                        <svg width="20px" height="20px" viewBox="0 0 -1 -1" fill="none">
+                        <path d="M21 21L15.8033 15.8033M7.5 10.5H13.5M15.8033 15.8033C17.1605 14.4461 18 12.5711 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18C12.5711 18 14.4461 17.1605 15.8033 15.8033Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></label>
 					</div>
 					
-                    <label class="radio__label radio__20"><p class="radio__20b">Mapa:</p></label>
+                    <label class="radio__label" style="border-left: 5px solid #555c63;">
                     <select id="mapa" onchange="maps()">
                         <option value="images/mapadal2.png">Jasna IMGW</option>
                         <option value="images/mapadal4.png">Ciemna IMGW</option>
                         <option value="images/mapamapz.jpg">Prosta</option>
                         <option value="images/applemap.jpg">Apple Maps</option>
                         <option value="images/fizyczna.jpg">Fizyczna</option>
-                      </select>&nbsp;&nbsp;
+                      </select></label>
 
                 </div>
 
@@ -737,7 +747,7 @@ function Player(radars) {
     this.pushEvent = function () {
         if (this.paused == true) {
             this.play();
-            document.getElementById('pushButton').innerHTML = 'pauza ▌▌';
+            document.getElementById('pushButton').innerHTML = 'pauza ⏸';
         } else {
             window.clearInterval(this.ivID);
             this.paused = true;
@@ -757,6 +767,19 @@ function playFc() {
     playerObject.play();
 }
 
+function goToScan(indexOffset) {
+    const targetIndex = playerObject.radars.length + indexOffset;
+    playerObject.current = targetIndex;
+
+    const radarElement = document.getElementById('radar');
+    const timetextElement = document.getElementById('timetext');
+
+    if (radarElement && timetextElement && playerObject.radars[playerObject.current]) {
+        radarElement.src = playerObject.radars[playerObject.current].image;
+        radarElement.alt = playerObject.radars[playerObject.current].time;
+        timetextElement.innerHTML = playerObject.radars[playerObject.current].time;
+    }
+}
 
 
 </script>
@@ -770,6 +793,9 @@ function playFc() {
 				var year = document.getElementById('rok')
 				year.innerHTML = date.getFullYear(); 
 				</script>
+
+
+
 
                 
             </h4>
