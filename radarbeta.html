@@ -147,6 +147,7 @@
             display: block;
             text-decoration: none;
             font-size: 14px;
+            overflow: hidden;
         }
         
         
@@ -302,7 +303,7 @@
         .powieksz_label {
             background-color: #4ab124;
             color: white;
-            padding: 12px 8px 6px 6px;
+            padding: 16px 12px 10px 10px;
             cursor: pointer;
             opacity: 0.9;
         }
@@ -310,6 +311,23 @@
         .powieksz_input {
             display: none;
         }
+
+        #data_start_data {
+            display: inline-block;
+        text-align: center; /* Wyrównaj tekst do lewej */
+    }
+    #data_start_time {
+        text-align: center; /* Wycentruj tekst */
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .box {
+        height: 15px;
+            width: 15px;
+            border-radius: 0%;
+            display: inline-block;
+    }
 
 
 </style>
@@ -383,7 +401,7 @@
         <img class="radar-lay0" width="100%" id="radar-background" src="./images/mapadal2.png">
         
     
-        <img class="radar-lay1" width="100%" id="radar" alt="" src="images/apple_icon.png">
+        <img class="radar-lay1" width="100%" id="radar" alt="" src="images/brakdanych.svg">
         <div class="radar-space"></div>
     </div>
 
@@ -402,7 +420,10 @@
                 </a>
                 
                  <div class="m_rp_label m_rp_sub">
-                    <span class="m_rp_item"><span id="timetext" class="cust_lab"><div id="data_start"></div></span></span>
+                    <span class="m_rp_item">
+                        <span style="font-size: 12px;"><div id="data_start_data"></div></span>
+                        <div id="data_start_time"></div>
+                    </span>
                 </div>  
                     
                 <a id="nextRadar" onclick="playerObject.makeStep(1);return false;" href="">
@@ -412,6 +433,40 @@
                 </a>
             </div>
             <div id="m_bottom">
+
+                
+                
+                <br><table style="width:100%">
+                    <tr>
+                      <td></td>
+                      <td><span class="box" style="background-color: #0707c8;"></span></td>
+                      <td><span class="box" style="background-color: #1261ff;"></span></td>
+                      <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                      <td><span class="box" style="background-color: #3ccdff;"></span></td>
+                      <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                      <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                      <td><span class="box" style="background-color: #ffffff;"></span></td>
+                      <td><span class="box" style="background-color: #fff799;"></span></td>
+                      <td><span class="box" style="background-color: #ffee33;"></span></td>
+                      <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                      <td><span class="box" style="background-color: #ff7300;"></span></td>
+                      <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                      <td><span class="box" style="background-color: #c80000;"></span></td>
+                      <td><span class="box" style="background-color: #af0014;"></span></td>
+                      <td><span class="box" style="background-color: #960028;"></span></td>
+                      <td><span class="box" style="background-color: #be0078;"></span></td>
+                      <td><span class="box" style="background-color: #d6119b;"></span></td>
+                      <td><span class="box" style="background-color: #ee23be;"></span></td>
+                      <td><span class="box" style="background-color: #f646d2;"></span></td>
+                      <td><span class="box" style="background-color: #ff69e6;"></span></td>
+                    </tr>
+                    <tr style="font-size: 8px;">
+                      <td>0</td><td>5.0</td><td>8.0</td><td>10.9</td><td>14.0</td><td>17.1</td><td>20.0</td><td>23.0</td><td>27.8</td><td>30.6</td><td>32.6</td><td>34.2</td><td>37.6</td><td>40.3</td><td>43.8</td><td>46.6</td><td>50.2</td><td>53.0</td><td>56.3</td><td>59.1</td><td>>62</td>
+                    </tr>
+                  </table>
+
+
+
                 <p style="text-align: right; font-size: 14px; margin-bottom: -10px; padding-top: 7px;">Mapa:&nbsp;&nbsp;</p>
                 <br>
                 <div id="m_menu" class="radio">
@@ -422,7 +477,7 @@
                     <input id="szybko" type="checkbox" name="szybko" class="radio__input" onclick="radar_checked()">
 					<label class="radio__label radio__20" for="szybko"><p class="radio__20b">►&nbsp;x4</p></label>
                     <input id="petla" type="checkbox" name="petla" class="radio__input" onclick="radar_checked()">
-					<label class="radio__label radio__20" for="petla"><p class="radio__20b">►&nbsp;↻</p></label>
+					<label class="radio__label radio__20" for="petla"><p class="radio__20b" style="margin-top: -4px;">►<span style="font-size: 20px;">&nbsp;↻</span></p></label>
                     
                     <input id="powieksz_sterujacy" type="checkbox" name="powieksz_sterujacy" class="radio__input" onclick="obslugaPowieksz(this)">
 					<label class="radio__label radio__20" for="powieksz_sterujacy"><p class="radio__20b">
@@ -447,6 +502,8 @@
                       </select></label>
 
                 </div>
+
+
 
 
             </div>
@@ -474,7 +531,7 @@ var element = document.getElementById('full_date')
 var data_start_skan = document.getElementById('data_start')
 
 
-const cmaxUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cmax';
+const cmaxUrl = 'jhttps://meteo.imgw.pl/api/radars/v1/list/cmax';
 const cappiUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cappi';
 const ehtUrl = 'https://meteo.imgw.pl/api/radars/v1/list/eht';
 const sriUrl = 'https://meteo.imgw.pl/api/radars/v1/list/sri';
@@ -634,55 +691,63 @@ async function pobierzDane() {
 
 
 function przetworzDane(dane) {
-    
-    const maxElementy = 84;
-    tablica = []; // Wyczyść tablicę przed dodaniem nowych danych
-    tablica.push({ time: null, image: null });
 
-    let lista;
-     if (radar_check === cmaxUrl) {
-        lista = dane.cmax.list;
-    } else if (radar_check === cappiUrl) {
-        lista = dane.cappi.list;
-    } else if (radar_check === ehtUrl) {
-        lista = dane.eht.list;
-    } else if (radar_check === sriUrl) {
-        lista = dane.sri.list;
-    } else if (radar_check === pacUrl) {
-        lista = dane.pac.list;
-    } else if (radar_check === zhailUrl) {
-        lista = dane.zhail.list;
-    }
+const maxElementy = 84;
+tablica = [];
+// Wyczyść tablicę przed dodaniem nowych danych
+tablica.push({ time: null, image: null, data: null }); // Dodano null dla data
 
-    lista.forEach(element => {
-        var dataObrazu = new Date(element.date * 1000);
-        var czasHHMM = `${String(dataObrazu.getHours()).padStart(2, '0')}:${String(dataObrazu.getMinutes()).padStart(2, '0')}`;
-        var imageUrl = element.url;
-        if (tablica.length < maxElementy) {
-            tablica.push({ time: czasHHMM, image: imageUrl });
-        }
-    });
-    tablica.push({ time: null, image: null });
+let lista;
+if (radar_check === cmaxUrl) {
+    lista = dane.cmax.list;
+} else if (radar_check === cappiUrl) {
+    lista = dane.cappi.list;
+} else if (radar_check === ehtUrl) {
+    lista = dane.eht.list;
+} else if (radar_check === sriUrl) {
+    lista = dane.sri.list;
+} else if (radar_check === pacUrl) {
+    lista = dane.pac.list;
+} else if (radar_check === zhailUrl) {
+    lista = dane.zhail.list;
+}
 
-    // Utwórz instancję playera i rozpocznij odtwarzanie po przetworzeniu danych
-    if (!playerObject) {
-        playerObject = new Player(tablica); // Inicjalizacja playera z aktualnymi danymi tylko raz
+lista.forEach(element => {
+    var dataObrazu = new Date(element.date * 1000);
+    var czasHHMM = `${String(dataObrazu.getHours()).padStart(2, '0')}:${String(dataObrazu.getMinutes()).padStart(2, '0')}`;
+    var imageUrl = element.url;
+    // Dodano wyodrębnienie daty w formacie RRRR-MM-DD
+    var dataRRMMDD = `${String(dataObrazu.getDate()).padStart(2, '0')}-${String(dataObrazu.getMonth() + 1).padStart(2, '0')}-${dataObrazu.getFullYear()}`;
+    if (tablica.length < maxElementy) {
+        tablica.push({ time: czasHHMM, image: imageUrl, data: dataRRMMDD }); // Zapis daty
     }
-    else{
-        playerObject.radars = tablica; // Aktualizuj dane w istniejącym playerze
+});
+tablica.push({ time: null, image: null, data: null });  // Dodano null dla data
+
+// Utwórz instancję playera i rozpocznij odtwarzanie po przetworzeniu danych
+if (!playerObject) {
+    playerObject = new Player(tablica);
+    // Inicjalizacja playera z aktualnymi danymi tylko raz
+}
+else{
+    playerObject.radars = tablica;
+    // Aktualizuj dane w istniejącym playerze
+}
+
+var ostatniObraz = tablica[tablica.length - 2];
+if (ostatniObraz && ostatniObraz.image) {
+    var obrazElement = document.getElementById('radar');
+    obrazElement.src = ostatniObraz.image;
+    var czasElementData = document.getElementById('data_start_data');
+    var czasElementTime = document.getElementById('data_start_time');
+    // Dodaj sprawdzenie, czy element istnieje
+    if (czasElementData && czasElementTime) {
+        // Wyświetlenie daty i godziny w oddzielnych divach
+        czasElementData.textContent = ostatniObraz.data;
+        czasElementTime.textContent = ostatniObraz.time;
     }
-	
-	var ostatniObraz = tablica[tablica.length - 2];
-    if (ostatniObraz && ostatniObraz.image) {
-        var obrazElement = document.getElementById('radar');
-        obrazElement.src = ostatniObraz.image;
-        var czasElement = document.getElementById('data_start');
-        // Dodaj sprawdzenie, czy element istnieje
-        if (czasElement) {
-            czasElement.textContent = ostatniObraz.time;
-        }
-    }
-	console.log(tablica);
+}
+console.log(tablica);
 }
 
 // Pobierz dane cmax na początku
@@ -719,13 +784,15 @@ function Player(radars) {
 
 
         let radarElement = document.getElementById('radar');
-        let timetextElement = document.getElementById('timetext');
+    let timetextElementData = document.getElementById('data_start_data'); // Zmiana ID
+    let timetextElementTime = document.getElementById('data_start_time'); // Zmiana ID
+    if (this.radars[this.current] && radarElement && timetextElementData && timetextElementTime) { // Dodano sprawdzenie obu elementów
+        radarElement.src = this.radars[this.current].image;
+        radarElement.alt = this.radars[this.current].time;
+        timetextElementData.textContent = this.radars[this.current].data; // Dodano aktualizację daty
+        timetextElementTime.textContent = this.radars[this.current].time; // Zmiana na time
+    }
 
-        if(this.radars[this.current] && radarElement && timetextElement){
-            radarElement.src = this.radars[this.current].image;
-            radarElement.alt = this.radars[this.current].time;
-            timetextElement.innerHTML = this.radars[this.current].time;
-        }
 
 
         if ((param != 1) && (param != -1)) {
@@ -772,12 +839,13 @@ function goToScan(indexOffset) {
     playerObject.current = targetIndex;
 
     const radarElement = document.getElementById('radar');
-    const timetextElement = document.getElementById('timetext');
-
-    if (radarElement && timetextElement && playerObject.radars[playerObject.current]) {
+    const timetextElementData = document.getElementById('data_start_data'); // Zmiana ID
+    const timetextElementTime = document.getElementById('data_start_time'); // Zmiana ID
+    if (radarElement && timetextElementData && timetextElementTime && playerObject.radars[playerObject.current]) { // Dodano sprawdzenie obu elementów
         radarElement.src = playerObject.radars[playerObject.current].image;
         radarElement.alt = playerObject.radars[playerObject.current].time;
-        timetextElement.innerHTML = playerObject.radars[playerObject.current].time;
+        timetextElementData.textContent = playerObject.radars[playerObject.current].data; // Dodano aktualizację daty
+        timetextElementTime.textContent = playerObject.radars[playerObject.current].time; // Zmiana na time
     }
 }
 
@@ -787,7 +855,8 @@ function goToScan(indexOffset) {
 
         </div>
             <div id="m_bottom">
-                <br> <h4> MiniRadar <div id="rok"></div>
+                <br><br>MiniRadar tylko wizualizuje skany radarowe na statycznej mapie. Źródłem i właścicielem danych radarowych jest Instytut Meteorologi i Gospodarki Wodnej - Państwowy Instytut Badawczy (IMGW-PIB)
+                <br><br> <h4> MiniRadar <div id="rok"></div>
 				
                 <script type="text/javascript">     
 				var year = document.getElementById('rok')
