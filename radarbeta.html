@@ -199,33 +199,6 @@
             display: inline-block;
         }
         
-        .dot1 {
-            background-color: #0000c0;
-        }
-        .dot2 {
-            background-color: #0078ff;
-        }
-        .dot3 {
-            background-color: #50d0ff;
-        }
-        .dot4 {
-            background-color: #ffffff;
-        }
-        .dot5 {
-            background-color: #ffe000;
-        }
-        .dot6 {
-            background-color: #ff7000;
-        }
-        .dot7 {
-            background-color: #800000;
-        }
-
-        input.largerCheckbox {
-            transform : scale(1.5);
-            float: right;
-            margin: 4px 20px;
-        }
     
         label {
             cursor: pointer;
@@ -285,9 +258,9 @@
 			background: #4ab124;
 			}
         .radar_icontext {
-        padding: 2px 1px;
+        padding: 2px 2px;
         float: right;
-        font-size: 10px;
+        font-size: 11px;
         font-family: Arial;
         color: #c4e944;
         font-weight: bold;
@@ -315,11 +288,13 @@
         #data_start_data {
             display: inline-block;
         text-align: center; /* Wyrównaj tekst do lewej */
+        font-size: 12px;
     }
     #data_start_time {
         text-align: center; /* Wycentruj tekst */
         display: inline-block;
         font-weight: bold;
+        font-size: 15px;
     }
 
     .box {
@@ -343,10 +318,18 @@
            
 
                 <div id="m_top">
+                    
+                    <svg height="30" width="190" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="0,90 90,0 110,0 20,90" style="fill:#800000;" />
+                            <polygon points="20,90 110,0 130,0 40,90" style="fill:#ff7000;" />
+                            <polygon points="40,90 130,0 150,0 60,90" style="fill:#ffffff;" />
+                            <polygon points="60,90 150,0 170,0 80,90" style="fill:#50d0ff;" />
+                            <polygon points="80,90 170,0 190,0 100,90" style="fill:#0000c0;" />
+                        </svg>
+
                     <div class="logo">MiniRadar 
                        
-<svg version="1.1" width="80" height="20" viewBox="443,213.81405,650,258.68595"><g id="document" fill="none"><rect x="477.07692" y="445" transform="scale(0.92857,0.5)" width="700" height="500" id="Shape 1 1" vector-effect="non-scaling-stroke"/></g><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g id="stage"><g id="layer1 1"><path d="M457.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#a80000" stroke="#a80000"/><path d="M532.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#ff7500" stroke="#ff7500"/><path d="M604.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#ffffff" stroke="#ffffff"/><path d="M677.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#63c6ff" stroke="#63c6ff"/><path d="M748.94495,471.02237l255.23487,-256.70832l73.85957,0.66741l-256.24817,256.67556z" id="Path 1" fill="#1000f0" stroke="#1000f0"/></g></g></g></svg>
-                        <span class="dot dot1"></span> <span class="dot dot2"></span> <span class="dot dot3"></span> <span class="dot dot4"></span> <span class="dot dot5"></span> <span class="dot dot6"></span> <span class="dot dot7"></span></div>
+                </div>
                     <span id="top_date" class="whitetime_font_1"><div id="full_date"></div>
  
                 </div>
@@ -421,7 +404,7 @@
                 
                  <div class="m_rp_label m_rp_sub">
                     <span class="m_rp_item">
-                        <span style="font-size: 12px;"><div id="data_start_data"></div></span>
+                        <div id="data_start_data"></div>
                         <div id="data_start_time"></div>
                     </span>
                 </div>  
@@ -437,33 +420,134 @@
                 
                 
                 <br><table style="width:100%">
-                    <tr>
-                      <td></td>
-                      <td><span class="box" style="background-color: #0707c8;"></span></td>
-                      <td><span class="box" style="background-color: #1261ff;"></span></td>
-                      <td><span class="box" style="background-color: #00b4ff;"></span></td>
-                      <td><span class="box" style="background-color: #3ccdff;"></span></td>
-                      <td><span class="box" style="background-color: #78e6ff;"></span></td>
-                      <td><span class="box" style="background-color: #bbf2ff;"></span></td>
-                      <td><span class="box" style="background-color: #ffffff;"></span></td>
-                      <td><span class="box" style="background-color: #fff799;"></span></td>
-                      <td><span class="box" style="background-color: #ffee33;"></span></td>
-                      <td><span class="box" style="background-color: #ffcb1a;"></span></td>
-                      <td><span class="box" style="background-color: #ff7300;"></span></td>
-                      <td><span class="box" style="background-color: #ff1e00;"></span></td>
-                      <td><span class="box" style="background-color: #c80000;"></span></td>
-                      <td><span class="box" style="background-color: #af0014;"></span></td>
-                      <td><span class="box" style="background-color: #960028;"></span></td>
-                      <td><span class="box" style="background-color: #be0078;"></span></td>
-                      <td><span class="box" style="background-color: #d6119b;"></span></td>
-                      <td><span class="box" style="background-color: #ee23be;"></span></td>
-                      <td><span class="box" style="background-color: #f646d2;"></span></td>
-                      <td><span class="box" style="background-color: #ff69e6;"></span></td>
-                    </tr>
-                    <tr style="font-size: 8px;">
-                      <td>0</td><td>5.0</td><td>8.0</td><td>10.9</td><td>14.0</td><td>17.1</td><td>20.0</td><td>23.0</td><td>27.8</td><td>30.6</td><td>32.6</td><td>34.2</td><td>37.6</td><td>40.3</td><td>43.8</td><td>46.6</td><td>50.2</td><td>53.0</td><td>56.3</td><td>59.1</td><td>>62</td>
-                    </tr>
+                    
                   </table>
+
+                  <div id="radar_tables_container">
+                    <table id="cmax_table" style="width:100%; display: block;">
+                        <tr>
+                            <td></td>
+                            <td><span class="box" style="background-color: #0707c8;"></span></td>
+                            <td><span class="box" style="background-color: #1261ff;"></span></td>
+                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                            <td><span class="box" style="background-color: #3ccdff;"></span></td>
+                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                            <td><span class="box" style="background-color: #ffffff;"></span></td>
+                            <td><span class="box" style="background-color: #fff799;"></span></td>
+                            <td><span class="box" style="background-color: #ffee33;"></span></td>
+                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #af0014;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                            <td><span class="box" style="background-color: #be0078;"></span></td>
+                            <td><span class="box" style="background-color: #d6119b;"></span></td>
+                            <td><span class="box" style="background-color: #ee23be;"></span></td>
+                            <td><span class="box" style="background-color: #f646d2;"></span></td>
+                            <td><span class="box" style="background-color: #ff69e6;"></span></td>
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>5.0</td><td>8.0</td><td>10.9</td><td>14.0</td><td>17.1</td><td>20.0</td><td>23.0</td><td>27.8</td><td>30.6</td><td>32.6</td><td>34.2</td><td>37.6</td><td>40.3</td><td>43.8</td><td>46.6</td><td>50.2</td><td>53.0</td><td>56.3</td><td>59.1</td><td>>62</td>
+                          </tr>
+                    </table>
+            
+                    <table id="eht_table" style="width:100%; display: none;">
+                        <tr>
+                            <td></td>
+                            
+                            <td><span class="box" style="background-color: #0000c7;"></span></td>
+                            <td><span class="box" style="background-color: #0079ff;"></span></td>
+                            <td><span class="box" style="background-color: #32c8ff;"></span></td>
+                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                           
+                            <td><span class="box" style="background-color: #ffffff;"></span></td>
+                            <td><span class="box" style="background-color: #fff799;"></span></td>
+                            <td><span class="box" style="background-color: #ffe837;"></span></td>
+                            
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #af0014;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                           
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>>12</td>
+                          </tr>
+                    </table>
+                    
+                    <table id="sri_table" style="width:100%; display: none;">
+                        <tr>
+                            <td></td>
+                            <td><span class="box" style="background-color: #0707c8;"></span></td>
+                            <td><span class="box" style="background-color: #1261ff;"></span></td>
+                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                            <td><span class="box" style="background-color: #3ccdff;"></span></td>
+                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                            <td><span class="box" style="background-color: #ffffff;"></span></td>
+                            <td><span class="box" style="background-color: #fff799;"></span></td>
+                            <td><span class="box" style="background-color: #ffee33;"></span></td>
+                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #af0014;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                            <td><span class="box" style="background-color: #be0078;"></span></td>
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>0.07</td><td>0.12</td><td>0.18</td><td>0.28</td><td>0.43</td><td>0.65</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>20</td><td>30</td><td>>50</td>
+                          </tr>
+                    </table>
+            
+                    <table id="pac_table" style="width: 100%; display: none;">
+                        <td></td>
+                        <td><span class="box" style="background-color: #0707c8;"></span></td>
+                        <td><span class="box" style="background-color: #1261ff;"></span></td>
+                        <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                        <td><span class="box" style="background-color: #3ccdff;"></span></td>
+                        <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                        <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                        <td><span class="box" style="background-color: #ffffff;"></span></td>
+                        <td><span class="box" style="background-color: #fff799;"></span></td>
+                        <td><span class="box" style="background-color: #ffee33;"></span></td>
+                        <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                        <td><span class="box" style="background-color: #ff7300;"></span></td>
+                        <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                        <td><span class="box" style="background-color: #c80000;"></span></td>
+                        <td><span class="box" style="background-color: #af0014;"></span></td>
+                        <td><span class="box" style="background-color: #960028;"></span></td>
+                        <td><span class="box" style="background-color: #be0078;"></span></td>
+                        <td><span class="box" style="background-color: #d6119b;"></span></td>
+                        <td><span class="box" style="background-color: #ee23be;"></span></td>
+                      </tr>
+                      <tr style="font-size: 8px;">
+                        <td>0</td><td>0.07</td><td>0.12</td><td>0.17</td><td>0.3</td><td>0.4</td><td>0.7</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>20</td><td>30</td><td>50</td><td>75</td><td>>120</td>
+                      </tr>
+                    </table>
+            
+                    <table id="zhail_table" style="width: 100%; display: none;">
+                        <tr>
+                            <td></td>
+                            <td><span class="box" style="background-color: #0707c8;"></span></td>
+                            <td><span class="box" style="background-color: #1261ff;"></span></td>
+                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>>90</td>
+                          </tr>
+                    </table>
+            
+                    </div>
 
 
 
@@ -553,25 +637,35 @@ let powiekszony = false;
 
 
 function radar_checked() {
+    // Ukryj wszystkie tabelki
+    document.getElementById('cmax_table').style.display = 'none';
+    document.getElementById('eht_table').style.display = 'none';
+    document.getElementById('sri_table').style.display = 'none';
+    document.getElementById('pac_table').style.display = 'none';
+    document.getElementById('zhail_table').style.display = 'none';
+
     if (document.getElementById('cappi').checked) {
         radar_check = cappiUrl;
-        tablica = tablica2; 
+        document.getElementById('cmax_table').style.display = 'block';
+        tablica = tablica2;
         if (cappiData === null) {
-            pobierzDane(); 
+            pobierzDane();
         } else {
-            przetworzDane(cappiData); 
+            przetworzDane(cappiData);
         }
     } else if (document.getElementById('cmax').checked) {
         radar_check = cmaxUrl;
-        tablica = tablica2; 
+        document.getElementById('cmax_table').style.display = 'block';
+        tablica = tablica2;
         if (cmaxData === null) {
-            pobierzDane(); 
+            pobierzDane();
         } else {
-            przetworzDane(cmaxData); 
+            przetworzDane(cmaxData);
         }
     } else if (document.getElementById('eht').checked) {
         radar_check = ehtUrl;
-        tablica = tablica2; // Poprawiono na tablica2, zakladam ze chcesz uzywac tej samej tablicy
+        document.getElementById('eht_table').style.display = 'block';
+        tablica = tablica2;
         if (ehtData === null) {
             pobierzDane();
         } else {
@@ -579,6 +673,7 @@ function radar_checked() {
         }
     } else if (document.getElementById('sri').checked) {
         radar_check = sriUrl;
+        document.getElementById('sri_table').style.display = 'block';
         tablica = tablica2;
         if (sriData === null) {
             pobierzDane();
@@ -587,6 +682,7 @@ function radar_checked() {
         }
     } else if (document.getElementById('pac').checked) {
         radar_check = pacUrl;
+        document.getElementById('pac_table').style.display = 'block';
         tablica = tablica2;
         if (pacData === null) {
             pobierzDane();
@@ -595,6 +691,7 @@ function radar_checked() {
         }
     } else if (document.getElementById('zhail').checked) {
         radar_check = zhailUrl;
+        document.getElementById('zhail_table').style.display = 'block';
         tablica = tablica2;
         if (zhailData === null) {
             pobierzDane();
