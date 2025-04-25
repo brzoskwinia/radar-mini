@@ -239,11 +239,12 @@
             }
 
         .radio__20 {
-            width: 10%;
+            width: 100%;
             }
 
-        .radio__10 {
-            width: 65%;
+        .mapy {
+            background-color: #4ab124;
+		    box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
             }
             
         .radio__20b {
@@ -304,6 +305,43 @@
             display: inline-block;
     }
 
+    .box1 { background-color: #0707c8; }
+    .box2 { background-color: #1261ff; }
+    .box3 { background-color: #00b4ff; }
+    .box4 { background-color: #3ccdff; }
+    .box5 { background-color: #78e6ff; }
+    .box6 { background-color: #bbf2ff; }
+    .box7 { background-color: #ffffff; }
+    .box8 { background-color: #fff799; }
+    .box9 { background-color: #ffee33; }
+    .box10 { background-color: #ffcb1a; }
+    .box11 { background-color: #ff7300; }
+    .box12 { background-color: #ff1e00; }
+    .box13 { background-color: #c80000; }
+    .box14 { background-color: #af0014; }
+    .box15 { background-color: #960028; }
+    .box16 { background-color: #be0078; }
+    .box17 { background-color: #d6119b; }
+    .box18 { background-color: #ee23be; }
+    .box19 { background-color: #f646d2; }
+    .box20 { background-color: #ff69e6; }
+
+    
+    .slider {
+        width: 70%;
+        height: 10px;
+        -webkit-appearance: none;
+        background: #d3d3d3;
+        outline: none;
+    }
+    
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #82d318;
+        cursor: pointer;
+    }
 
 </style>
     
@@ -427,26 +465,26 @@
                     <table id="cmax_table" style="width:100%; display: block;">
                         <tr>
                             <td></td>
-                            <td><span class="box" style="background-color: #0707c8;"></span></td>
-                            <td><span class="box" style="background-color: #1261ff;"></span></td>
-                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
-                            <td><span class="box" style="background-color: #3ccdff;"></span></td>
-                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
-                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
-                            <td><span class="box" style="background-color: #ffffff;"></span></td>
-                            <td><span class="box" style="background-color: #fff799;"></span></td>
-                            <td><span class="box" style="background-color: #ffee33;"></span></td>
-                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
-                            <td><span class="box" style="background-color: #ff7300;"></span></td>
-                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
-                            <td><span class="box" style="background-color: #c80000;"></span></td>
-                            <td><span class="box" style="background-color: #af0014;"></span></td>
-                            <td><span class="box" style="background-color: #960028;"></span></td>
-                            <td><span class="box" style="background-color: #be0078;"></span></td>
-                            <td><span class="box" style="background-color: #d6119b;"></span></td>
-                            <td><span class="box" style="background-color: #ee23be;"></span></td>
-                            <td><span class="box" style="background-color: #f646d2;"></span></td>
-                            <td><span class="box" style="background-color: #ff69e6;"></span></td>
+                            <td><span class="box box1"></span></td>
+                            <td><span class="box box2"></span></td>
+                            <td><span class="box box3"></span></td>
+                            <td><span class="box box4"></span></td>
+                            <td><span class="box box5"></span></td>
+                            <td><span class="box box6"></span></td>
+                            <td><span class="box box6"></span></td>
+                            <td><span class="box box8"></span></td>
+                            <td><span class="box box9"></span></td>
+                            <td><span class="box box10"></span></td>
+                            <td><span class="box box11"></span></td>
+                            <td><span class="box box12"></span></td>
+                            <td><span class="box box13"></span></td>
+                            <td><span class="box box14"></span></td>
+                            <td><span class="box box15"></span></td>
+                            <td><span class="box box16"></span></td>
+                            <td><span class="box box17"></span></td>
+                            <td><span class="box box18"></span></td>
+                            <td><span class="box box19"></span></td>
+                            <td><span class="box box20"></span></td>
                           </tr>
                           <tr style="font-size: 8px;">
                             <td>0</td><td>5.0</td><td>8.0</td><td>10.9</td><td>14.0</td><td>17.1</td><td>20.0</td><td>23.0</td><td>27.8</td><td>30.6</td><td>32.6</td><td>34.2</td><td>37.6</td><td>40.3</td><td>43.8</td><td>46.6</td><td>50.2</td><td>53.0</td><td>56.3</td><td>59.1</td><td>>62</td>
@@ -457,20 +495,18 @@
                         <tr>
                             <td></td>
                             
-                            <td><span class="box" style="background-color: #0000c7;"></span></td>
-                            <td><span class="box" style="background-color: #0079ff;"></span></td>
-                            <td><span class="box" style="background-color: #32c8ff;"></span></td>
-                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
-                           
-                            <td><span class="box" style="background-color: #ffffff;"></span></td>
-                            <td><span class="box" style="background-color: #fff799;"></span></td>
-                            <td><span class="box" style="background-color: #ffe837;"></span></td>
-                            
-                            <td><span class="box" style="background-color: #ff7300;"></span></td>
-                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
-                            <td><span class="box" style="background-color: #c80000;"></span></td>
-                            <td><span class="box" style="background-color: #af0014;"></span></td>
-                            <td><span class="box" style="background-color: #960028;"></span></td>
+                            <td><span class="box box1"></span></td>
+                            <td><span class="box box3"></span></td>
+                            <td><span class="box box4"></span></td>
+                            <td><span class="box box5"></span></td>
+                            <td><span class="box box7"></span></td>
+                            <td><span class="box box8"></span></td>
+                            <td><span class="box box9"></span></td>
+                            <td><span class="box box11"></span></td>
+                            <td><span class="box box12"></span></td>
+                            <td><span class="box box13"></span></td>
+                            <td><span class="box box14"></span></td>
+                            <td><span class="box box15"></span></td>
                            
                           </tr>
                           <tr style="font-size: 8px;">
@@ -481,22 +517,22 @@
                     <table id="sri_table" style="width:100%; display: none;">
                         <tr>
                             <td></td>
-                            <td><span class="box" style="background-color: #0707c8;"></span></td>
-                            <td><span class="box" style="background-color: #1261ff;"></span></td>
-                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
-                            <td><span class="box" style="background-color: #3ccdff;"></span></td>
-                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
-                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
-                            <td><span class="box" style="background-color: #ffffff;"></span></td>
-                            <td><span class="box" style="background-color: #fff799;"></span></td>
-                            <td><span class="box" style="background-color: #ffee33;"></span></td>
-                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
-                            <td><span class="box" style="background-color: #ff7300;"></span></td>
-                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
-                            <td><span class="box" style="background-color: #c80000;"></span></td>
-                            <td><span class="box" style="background-color: #af0014;"></span></td>
-                            <td><span class="box" style="background-color: #960028;"></span></td>
-                            <td><span class="box" style="background-color: #be0078;"></span></td>
+                            <td><span class="box box1"></span></td>
+                            <td><span class="box box2"></span></td>
+                            <td><span class="box box3"></span></td>
+                            <td><span class="box box4"></span></td>
+                            <td><span class="box box5"></span></td>
+                            <td><span class="box box6"></span></td>
+                            <td><span class="box box7"></span></td>
+                            <td><span class="box box8"></span></td>
+                            <td><span class="box box9"></span></td>
+                            <td><span class="box box10"></span></td>
+                            <td><span class="box box11"></span></td>
+                            <td><span class="box box12"></span></td>
+                            <td><span class="box box13"></span></td>
+                            <td><span class="box box14"></span></td>
+                            <td><span class="box box15"></span></td>
+                            <td><span class="box box16"></span></td>
                           </tr>
                           <tr style="font-size: 8px;">
                             <td>0</td><td>0.07</td><td>0.12</td><td>0.18</td><td>0.28</td><td>0.43</td><td>0.65</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>20</td><td>30</td><td>>50</td>
@@ -505,24 +541,24 @@
             
                     <table id="pac_table" style="width: 100%; display: none;">
                         <td></td>
-                        <td><span class="box" style="background-color: #0707c8;"></span></td>
-                        <td><span class="box" style="background-color: #1261ff;"></span></td>
-                        <td><span class="box" style="background-color: #00b4ff;"></span></td>
-                        <td><span class="box" style="background-color: #3ccdff;"></span></td>
-                        <td><span class="box" style="background-color: #78e6ff;"></span></td>
-                        <td><span class="box" style="background-color: #bbf2ff;"></span></td>
-                        <td><span class="box" style="background-color: #ffffff;"></span></td>
-                        <td><span class="box" style="background-color: #fff799;"></span></td>
-                        <td><span class="box" style="background-color: #ffee33;"></span></td>
-                        <td><span class="box" style="background-color: #ffcb1a;"></span></td>
-                        <td><span class="box" style="background-color: #ff7300;"></span></td>
-                        <td><span class="box" style="background-color: #ff1e00;"></span></td>
-                        <td><span class="box" style="background-color: #c80000;"></span></td>
-                        <td><span class="box" style="background-color: #af0014;"></span></td>
-                        <td><span class="box" style="background-color: #960028;"></span></td>
-                        <td><span class="box" style="background-color: #be0078;"></span></td>
-                        <td><span class="box" style="background-color: #d6119b;"></span></td>
-                        <td><span class="box" style="background-color: #ee23be;"></span></td>
+                        <td><span class="box box1"></span></td>
+                        <td><span class="box box2"></span></td>
+                        <td><span class="box box3"></span></td>
+                        <td><span class="box box4"></span></td>
+                        <td><span class="box box5"></span></td>
+                        <td><span class="box box6"></span></td>
+                        <td><span class="box box7"></span></td>
+                        <td><span class="box box8"></span></td>
+                        <td><span class="box box9"></span></td>
+                        <td><span class="box box10"></span></td>
+                        <td><span class="box box11"></span></td>
+                        <td><span class="box box12"></span></td>
+                        <td><span class="box box13"></span></td>
+                        <td><span class="box box14"></span></td>
+                        <td><span class="box box15"></span></td>
+                        <td><span class="box box16"></span></td>
+                        <td><span class="box box17"></span></td>
+                        <td><span class="box box18"></span></td>
                       </tr>
                       <tr style="font-size: 8px;">
                         <td>0</td><td>0.07</td><td>0.12</td><td>0.17</td><td>0.3</td><td>0.4</td><td>0.7</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>20</td><td>30</td><td>50</td><td>75</td><td>>120</td>
@@ -532,15 +568,15 @@
                     <table id="zhail_table" style="width: 100%; display: none;">
                         <tr>
                             <td></td>
-                            <td><span class="box" style="background-color: #0707c8;"></span></td>
-                            <td><span class="box" style="background-color: #1261ff;"></span></td>
-                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
-                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
-                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
-                            <td><span class="box" style="background-color: #ff7300;"></span></td>
-                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
-                            <td><span class="box" style="background-color: #c80000;"></span></td>
-                            <td><span class="box" style="background-color: #960028;"></span></td>
+                            <td><span class="box box1"></span></td>
+                            <td><span class="box box2"></span></td>
+                            <td><span class="box box3"></span></td>
+                            <td><span class="box box6"></span></td>
+                            <td><span class="box box10"></span></td>
+                            <td><span class="box box11"></span></td>
+                            <td><span class="box box12"></span></td>
+                            <td><span class="box box13"></span></td>
+                            <td><span class="box box15"></span></td>
                           </tr>
                           <tr style="font-size: 8px;">
                             <td>0</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>>90</td>
@@ -549,9 +585,23 @@
             
                     </div>
 
+                    <div id="m_menu" class="radio" style="margin: 5px 0 5px 0;">
 
+                    <br><label class="radio__label radio__20 mapy"><svg fill="#ffffff" width="20px" height="20px" viewBox="0 0 24 24">
+                        <path d="M12,2 C17.3,7.0 20,11.0 20,14 C20,18.4 16.4,22 12,22 C7.5,22 4,18.4 4,14 C4,11.0 6.6,7.0 12,2 Z M12.5,5.34 L12,4.79 L11.78,5.01 C8.50,8.34 6.63,11.05 6.13,13.00 L17.86,13.00 C17.37,11.11 15.62,8.52 12.54,5.34 L12.54,5.34 Z"/>
+                      </svg>
+                    <input class="slider" type="range" id="opacitySlider" min="0.1" max="1" step="0.1" value="1"></label>
 
-                <p style="text-align: right; font-size: 14px; margin-bottom: -10px; padding-top: 7px;">Mapa:&nbsp;&nbsp;</p>
+                
+                    <label class="radio__label radio__20 mapy" style="margin-right: 5px;">
+                    Mapa: <select id="mapa" onchange="maps()">
+                        <option value="images/mapadal2.png">Jasna IMGW</option>
+                        <option value="images/mapadal4.png">Ciemna IMGW</option>
+                        <option value="images/mapamapz.jpg">Prosta</option>
+                        <option value="images/applemap.jpg">Apple Maps</option>
+                        <option value="images/fizyczna.jpg">Fizyczna</option>
+                      </select></label> </div>
+
                 <br>
                 <div id="m_menu" class="radio">
                     <input id="first_scan" type="button" name="first_scan" class="radio__input" onclick="goToScan(-84)">
@@ -575,19 +625,16 @@
                         <path d="M21 21L15.8033 15.8033M7.5 10.5H13.5M15.8033 15.8033C17.1605 14.4461 18 12.5711 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18C12.5711 18 14.4461 17.1605 15.8033 15.8033Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg></label>
 					</div>
+
+                    <input id="downloadRadar" type="button" name="downloadRadar" class="radio__input">
+					<label class="radio__label radio__20" for="downloadRadar"  style="border-right: 5px solid #555c63;">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                        <path id="Vector" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></label>
 					
-                    <label class="radio__label" style="border-left: 5px solid #555c63;">
-                    <select id="mapa" onchange="maps()">
-                        <option value="images/mapadal2.png">Jasna IMGW</option>
-                        <option value="images/mapadal4.png">Ciemna IMGW</option>
-                        <option value="images/mapamapz.jpg">Prosta</option>
-                        <option value="images/applemap.jpg">Apple Maps</option>
-                        <option value="images/fizyczna.jpg">Fizyczna</option>
-                      </select></label>
+                    
 
                 </div>
-
-
 
 
             </div>
@@ -711,6 +758,62 @@ function maps()
 window.onload = function() {
     View_map();
 };
+
+const radarImage = document.getElementById('radar');
+const opacitySlider = document.getElementById('opacitySlider');
+opacitySlider.addEventListener('input', function() {
+    radarImage.style.opacity = opacitySlider.value;
+});
+
+<!-- Funkcja pobierania skanu radarowego -->
+
+document.getElementById('downloadRadar').addEventListener('click', function() {
+    const obrazRadaru = document.getElementById('radar');
+    const urlObrazu = obrazRadaru.src;
+    let nazwaPliku = '';
+
+    // Wyodrębnienie nazwy pliku z URL
+    const urlParts = urlObrazu.split('/');
+    const oryginalnaNazwaPliku = urlParts[urlParts.length - 1];
+
+    let typRadaru = '';
+
+    if (document.getElementById('cmax').checked) {
+        typRadaru = 'cmax';
+    } else if (document.getElementById('cappi').checked) {
+        typRadaru = 'cappi';
+    } else if (document.getElementById('eht').checked) {
+        typRadaru = 'eht';
+    } else if (document.getElementById('sri').checked) {
+        typRadaru = 'sri';
+    } else if (document.getElementById('pac').checked) {
+        typRadaru = 'pac';
+    } else if (document.getElementById('zhail').checked) {
+        typRadaru = 'zhail';
+    }
+
+    // Dodanie podkreślenia między datą a godziną (8 znaków daty i 4 znaki godziny)
+    const data = oryginalnaNazwaPliku.substring(0, 8); // Pierwsze 8 znaków
+    const godzina = oryginalnaNazwaPliku.substring(8, 12); // Następne 4 znaki
+
+    nazwaPliku = typRadaru + '_skan_radaru_' + data + '_' + godzina;
+
+    fetch(urlObrazu, {
+        method: 'GET',
+        mode: 'cors'
+    })
+    .then(response => response.blob())
+    .then(blob => {
+        let a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = nazwaPliku;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    })
+    .catch(error => {
+    });
+});
 
 function View_map() {
     var choseMap = localStorage.getItem('selectedMap');
@@ -952,7 +1055,7 @@ function goToScan(indexOffset) {
 
         </div>
             <div id="m_bottom">
-                <br><br>MiniRadar tylko wizualizuje skany radarowe na statycznej mapie. Źródłem i właścicielem danych radarowych jest Instytut Meteorologi i Gospodarki Wodnej - Państwowy Instytut Badawczy (IMGW-PIB)
+                <br><br>MiniRadar tylko wizualizuje skany radarowe na statycznej mapie. Źródłem i właścicielem danych radarowych jest Instytut Meteorologii i Gospodarki Wodnej - Państwowy Instytut Badawczy (IMGW-PIB).
                 <br><br> <h4> MiniRadar <div id="rok"></div>
 				
                 <script type="text/javascript">     
