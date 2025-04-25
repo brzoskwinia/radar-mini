@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="robots" content="all">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="Viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="Description" content="MiniRadar">
+    <meta name="Keywords" content="altamedia">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/apple_icon.png">
+    <title>Radar</title>
+    
+<style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, Arial;
+        }
+        #m_main{
+            width: 100%;
+        }   
+        
+        #top_date{
+            float: right;
+            padding-right: 5px;
+            padding-top: 7px;
+        }
+        
+        
+
+        #m_top{
+            background-color: #555c63;
+            height: 30px;
+           
+        }
+        
+        #m_menu{
+            height: 30px;
+            background-color: #b3b5b8;
+        }
+        
+        #menu_1{
+            background-color: #cdd1d4;
+            float: left;
+            width: 20%;
+            height: 100%;
+        }
+        
+        #menu_2{
+            float: left;
+            width: 40%;
+            height: 100%;
+        }
+        
+        #menu_3{
+            background-color: #b4b4b4;
+            float: left;
+            width: 20%;
+            height: 10%;
+        }
+        
+       
+        
+        .menu_1_text{
+            padding-top: 15px;
+        }
+        
+        .menu_2_text{
+            padding-top: 5px;
+        }
+        
+        .menu_3_text{
+            padding-top: 5px;
+        }
+        
+        .menu_text{
+            padding-left: 8px;
+            height: 100%;
+            vertical-align: middle;
+            display: block;
+            text-decoration: none;
+            color: white;
+   
+        }
+      
+        #m_bottom{
+            background-color: #555c63;
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .whitetime_font_1{
+            font-size: 12px;
+            color: #ffffff;
+        }
+        
+        .whitetime_font_2{
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+       
+           
+        #m_radarplayer{
+            height: 30px;
+            width: 100%;
+        }
+        
+        .m_rp_play{
+            background-color: #c4e944;
+            width: 40%;
+            text-align: center; 
+        }
+        
+        .m_rp_rewindleft{
+            background-color: #82d318;
+            width: 8%;
+            text-align: center; 
+        }
+        
+        .m_rp_rewindright{
+            background-color: #4ab124;
+            width: 8%;
+            text-align: center; 
+        }
+        
+        .m_rp_label{
+            width: 44%;
+            text-align: center; 
+            color: black;
+        }
+
+      
+        
+        .m_rp_sub{
+             float: left;
+             height: 100%;
+        }
+        
+        .m_rp_item{
+            padding-top: 6px;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+            overflow: hidden;
+        }
+        
+        
+        .text_white {
+            color: white;
+        }
+        
+        .logo{
+            padding-left: 5px;
+            padding-top: 5px;
+            float: left;
+            font-weight: bold;
+            color: white;
+            font-size: 18px;
+        }
+        
+        #radar-container{
+            width: 110%;
+            position: relative;
+            height: 102%;
+            margin-left: -10%;
+        }
+
+        .radar-lay0 {
+            z-index: 50;
+        }
+
+
+        .radar-lay1{
+            z-index: 99;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .radar-space{
+            width: 100%;
+            clear: both;
+        }
+
+        .color1 {
+            color: #0000c0;
+        }
+        
+        .dot {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+    
+        label {
+            cursor: pointer;
+        }
+		
+		.radio {
+		display: inline-flex;
+		overflow: hidden;
+		box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+		width: 100%;
+		}
+		
+		.radio__input {
+		    display: none;
+            }
+
+        .checkbox__input {
+            display: none;
+            }
+		
+		.radio__label {
+			padding: 5px 10px;
+			font-size: 14px;
+			font-family: Sans-serif;
+			color: #ffffff;
+			cursor: pointer;
+			transition: background 0.1s;
+			}
+
+        .radio__40b{
+            width: 50%;
+            background: #ababab;
+        }
+        
+        .radio__40 {
+            width: 50%;
+			background: #a4a4a4;
+            }
+
+        .radio__20 {
+            width: 10%;
+            }
+
+        .radio__10 {
+            width: 65%;
+            }
+            
+        .radio__20b {
+            float: center;
+        }
+			
+		.radio__20 {
+			border-left: 5px solid #555c63;
+			}
+			
+		.radio__input:checked + .radio__label {
+			background: #4ab124;
+			}
+        .radar_icontext {
+        padding: 2px 2px;
+        float: right;
+        font-size: 11px;
+        font-family: Arial;
+        color: #c4e944;
+        font-weight: bold;
+        }
+
+        #powieksz_container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .powieksz_label {
+            background-color: #4ab124;
+            color: white;
+            padding: 16px 12px 10px 10px;
+            cursor: pointer;
+            opacity: 0.9;
+        }
+        
+        .powieksz_input {
+            display: none;
+        }
+
+        #data_start_data {
+            display: inline-block;
+        text-align: center; /* Wyrównaj tekst do lewej */
+        font-size: 12px;
+    }
+    #data_start_time {
+        text-align: center; /* Wycentruj tekst */
+        display: inline-block;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .box {
+        height: 15px;
+            width: 15px;
+            border-radius: 0%;
+            display: inline-block;
+    }
+
+
+</style>
+    
+</head>
+
+<body>
+    
+            
+
+     <div id="m_main">
+<div id="dane">
+           
+
+                <div id="m_top">
+                    
+                    <svg height="30" width="190" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="0,90 90,0 110,0 20,90" style="fill:#800000;" />
+                            <polygon points="20,90 110,0 130,0 40,90" style="fill:#ff7000;" />
+                            <polygon points="40,90 130,0 150,0 60,90" style="fill:#ffffff;" />
+                            <polygon points="60,90 150,0 170,0 80,90" style="fill:#50d0ff;" />
+                            <polygon points="80,90 170,0 190,0 100,90" style="fill:#0000c0;" />
+                        </svg>
+
+                    <div class="logo">MiniRadar 
+                       
+                </div>
+                    <span id="top_date" class="whitetime_font_1"><div id="full_date"></div>
+ 
+                </div>
+				
+<div id="m_menu" class="radio">
+
+                    <input id="cmax" class="radio__input" type="radio" name="radarclick" onclick="radar_checked()" checked>
+					<label class="radio__label radio__40" for="cmax">Odbiciowość max<p class="radar_icontext">CMAX</p></label>
+					<input id="sri" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
+					<label class="radio__label radio__40b" for="sri">Natężenie opadu<p class="radar_icontext">SRI</p></label>
+					
+                    
+
+                </div>
+                <div id="m_menu" class="radio">
+
+                    <input id="cappi" class="radio__input" type="radio" name="radarclick" onclick="radar_checked()">
+					<label class="radio__label radio__40" for="cappi">Odbiciowość 1km<p class="radar_icontext">CAPPI</p></label>
+					<input id="pac" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
+					<label class="radio__label radio__40b" for="pac">Suma Opadu 1h<p class="radar_icontext">PAC</p></label>
+					
+                    
+
+                </div>
+
+                <div id="m_menu" class="radio">
+
+                    <input id="eht" class="radio__input" type="radio" name="radarclick" onclick="radar_checked()">
+					<label class="radio__label radio__40" for="eht">Wysokość chmur<p class="radar_icontext">EHT</p></label>
+					<input id="zhail" class="radio__input" name="radarclick" type="radio" onclick="radar_checked()">
+					<label class="radio__label radio__40b" for="zhail">Grad<p class="radar_icontext">ZHAIL</p></label>
+                    
+
+
+                    
+
+                </div>
+                
+               
+
+                
+				
+				
+                    
+                    
+            
+              
+        
+    
+    
+    <div id="radar-container">
+        <img class="radar-lay0" width="100%" id="radar-background" src="./images/mapadal2.png">
+        
+    
+        <img class="radar-lay1" width="100%" id="radar" alt="" src="images/brakdanych.svg">
+        <div class="radar-space"></div>
+    </div>
+
+
+        <div id="m_radarplayer">
+               
+                <div class="m_rp_play m_rp_sub" onclick="playerObject.pushEvent();return false;">
+                    <span id="pushButton" class="m_rp_item text_white">odtwarzaj ►</span>
+                </div>
+                
+                <a id="prevRadar" onclick="playerObject.makeStep(-1);return false;" href="">
+                
+                    <div id="prevB" class="m_rp_rewindleft m_rp_sub">
+                         <span class="m_rp_item text_white">◄◄</span>
+                    </div>
+                </a>
+                
+                 <div class="m_rp_label m_rp_sub">
+                    <span class="m_rp_item">
+                        <div id="data_start_data"></div>
+                        <div id="data_start_time"></div>
+                    </span>
+                </div>  
+                    
+                <a id="nextRadar" onclick="playerObject.makeStep(1);return false;" href="">
+                    <div id="nextB" class="m_rp_rewindright m_rp_sub">
+                        <span class="m_rp_item text_white">►►</span>
+                    </div> 
+                </a>
+            </div>
+            <div id="m_bottom">
+
+                
+                
+                <br><table style="width:100%">
+                    
+                  </table>
+
+                  <div id="radar_tables_container">
+                    <table id="cmax_table" style="width:100%; display: block;">
+                        <tr>
+                            <td></td>
+                            <td><span class="box" style="background-color: #0707c8;"></span></td>
+                            <td><span class="box" style="background-color: #1261ff;"></span></td>
+                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                            <td><span class="box" style="background-color: #3ccdff;"></span></td>
+                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                            <td><span class="box" style="background-color: #ffffff;"></span></td>
+                            <td><span class="box" style="background-color: #fff799;"></span></td>
+                            <td><span class="box" style="background-color: #ffee33;"></span></td>
+                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #af0014;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                            <td><span class="box" style="background-color: #be0078;"></span></td>
+                            <td><span class="box" style="background-color: #d6119b;"></span></td>
+                            <td><span class="box" style="background-color: #ee23be;"></span></td>
+                            <td><span class="box" style="background-color: #f646d2;"></span></td>
+                            <td><span class="box" style="background-color: #ff69e6;"></span></td>
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>5.0</td><td>8.0</td><td>10.9</td><td>14.0</td><td>17.1</td><td>20.0</td><td>23.0</td><td>27.8</td><td>30.6</td><td>32.6</td><td>34.2</td><td>37.6</td><td>40.3</td><td>43.8</td><td>46.6</td><td>50.2</td><td>53.0</td><td>56.3</td><td>59.1</td><td>>62</td>
+                          </tr>
+                    </table>
+            
+                    <table id="eht_table" style="width:100%; display: none;">
+                        <tr>
+                            <td></td>
+                            
+                            <td><span class="box" style="background-color: #0000c7;"></span></td>
+                            <td><span class="box" style="background-color: #0079ff;"></span></td>
+                            <td><span class="box" style="background-color: #32c8ff;"></span></td>
+                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                           
+                            <td><span class="box" style="background-color: #ffffff;"></span></td>
+                            <td><span class="box" style="background-color: #fff799;"></span></td>
+                            <td><span class="box" style="background-color: #ffe837;"></span></td>
+                            
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #af0014;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                           
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>>12</td>
+                          </tr>
+                    </table>
+                    
+                    <table id="sri_table" style="width:100%; display: none;">
+                        <tr>
+                            <td></td>
+                            <td><span class="box" style="background-color: #0707c8;"></span></td>
+                            <td><span class="box" style="background-color: #1261ff;"></span></td>
+                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                            <td><span class="box" style="background-color: #3ccdff;"></span></td>
+                            <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                            <td><span class="box" style="background-color: #ffffff;"></span></td>
+                            <td><span class="box" style="background-color: #fff799;"></span></td>
+                            <td><span class="box" style="background-color: #ffee33;"></span></td>
+                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #af0014;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                            <td><span class="box" style="background-color: #be0078;"></span></td>
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>0.07</td><td>0.12</td><td>0.18</td><td>0.28</td><td>0.43</td><td>0.65</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>20</td><td>30</td><td>>50</td>
+                          </tr>
+                    </table>
+            
+                    <table id="pac_table" style="width: 100%; display: none;">
+                        <td></td>
+                        <td><span class="box" style="background-color: #0707c8;"></span></td>
+                        <td><span class="box" style="background-color: #1261ff;"></span></td>
+                        <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                        <td><span class="box" style="background-color: #3ccdff;"></span></td>
+                        <td><span class="box" style="background-color: #78e6ff;"></span></td>
+                        <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                        <td><span class="box" style="background-color: #ffffff;"></span></td>
+                        <td><span class="box" style="background-color: #fff799;"></span></td>
+                        <td><span class="box" style="background-color: #ffee33;"></span></td>
+                        <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                        <td><span class="box" style="background-color: #ff7300;"></span></td>
+                        <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                        <td><span class="box" style="background-color: #c80000;"></span></td>
+                        <td><span class="box" style="background-color: #af0014;"></span></td>
+                        <td><span class="box" style="background-color: #960028;"></span></td>
+                        <td><span class="box" style="background-color: #be0078;"></span></td>
+                        <td><span class="box" style="background-color: #d6119b;"></span></td>
+                        <td><span class="box" style="background-color: #ee23be;"></span></td>
+                      </tr>
+                      <tr style="font-size: 8px;">
+                        <td>0</td><td>0.07</td><td>0.12</td><td>0.17</td><td>0.3</td><td>0.4</td><td>0.7</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>20</td><td>30</td><td>50</td><td>75</td><td>>120</td>
+                      </tr>
+                    </table>
+            
+                    <table id="zhail_table" style="width: 100%; display: none;">
+                        <tr>
+                            <td></td>
+                            <td><span class="box" style="background-color: #0707c8;"></span></td>
+                            <td><span class="box" style="background-color: #1261ff;"></span></td>
+                            <td><span class="box" style="background-color: #00b4ff;"></span></td>
+                            <td><span class="box" style="background-color: #bbf2ff;"></span></td>
+                            <td><span class="box" style="background-color: #ffcb1a;"></span></td>
+                            <td><span class="box" style="background-color: #ff7300;"></span></td>
+                            <td><span class="box" style="background-color: #ff1e00;"></span></td>
+                            <td><span class="box" style="background-color: #c80000;"></span></td>
+                            <td><span class="box" style="background-color: #960028;"></span></td>
+                          </tr>
+                          <tr style="font-size: 8px;">
+                            <td>0</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>>90</td>
+                          </tr>
+                    </table>
+            
+                    </div>
+
+
+
+                <p style="text-align: right; font-size: 14px; margin-bottom: -10px; padding-top: 7px;">Mapa:&nbsp;&nbsp;</p>
+                <br>
+                <div id="m_menu" class="radio">
+                    <input id="first_scan" type="button" name="first_scan" class="radio__input" onclick="goToScan(-84)">
+					<label class="radio__label radio__20" style="background: #82d318" for="first_scan"><p class="radio__20b">l◄                    </p></label>
+                    <input id="now_scan" type="button" name="now_scan" class="radio__input" onclick="goToScan(-2)">
+					<label class="radio__label radio__20" style="background: #82d318" for="now_scan"><p class="radio__20b">►l</p></label>
+                    <input id="szybko" type="checkbox" name="szybko" class="radio__input" onclick="radar_checked()">
+					<label class="radio__label radio__20" for="szybko"><p class="radio__20b">►&nbsp;x4</p></label>
+                    <input id="petla" type="checkbox" name="petla" class="radio__input" onclick="radar_checked()">
+					<label class="radio__label radio__20" for="petla"><p class="radio__20b" style="margin-top: -4px;">►<span style="font-size: 20px;">&nbsp;↻</span></p></label>
+                    
+                    <input id="powieksz_sterujacy" type="checkbox" name="powieksz_sterujacy" class="radio__input" onclick="obslugaPowieksz(this)">
+					<label class="radio__label radio__20" for="powieksz_sterujacy"><p class="radio__20b">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                        <path d="M15.8053 15.8013L21 21M10.5 7.5V13.5M7.5 10.5H13.5M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></p></label>
+					<div id="powieksz_container" style="display: none;">
+					<input id="powieksz" type="checkbox" name="powieksz" class="radio__input" onclick="obslugaPowieksz(this)">
+					<label class="powieksz_label" for="powieksz">
+                        <svg width="20px" height="20px" viewBox="0 0 -1 -1" fill="none">
+                        <path d="M21 21L15.8033 15.8033M7.5 10.5H13.5M15.8033 15.8033C17.1605 14.4461 18 12.5711 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18C12.5711 18 14.4461 17.1605 15.8033 15.8033Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></label>
+					</div>
+					
+                    <label class="radio__label" style="border-left: 5px solid #555c63;">
+                    <select id="mapa" onchange="maps()">
+                        <option value="images/mapadal2.png">Jasna IMGW</option>
+                        <option value="images/mapadal4.png">Ciemna IMGW</option>
+                        <option value="images/mapamapz.jpg">Prosta</option>
+                        <option value="images/applemap.jpg">Apple Maps</option>
+                        <option value="images/fizyczna.jpg">Fizyczna</option>
+                      </select></label>
+
+                </div>
+
+                <button id="downloadRadar">Pobierz skan</button>
+
+
+            </div>
+
+
+
+
+<script type="text/javascript">
+
+
+    function zero(i) {
+        return (i < 10)? '0'+i : i;
+    }
+    
+    
+var round = 1000 * 60 * 10;
+var date = new Date()
+var rounded = new Date(Math.floor(date.getTime() / round) * round)
+
+var element = document.getElementById('full_date')
+ 
+    element.innerHTML += "" + zero(date.getDate()) + "." + zero(date.getMonth()+1) + "." + date.getFullYear();  
+
+
+var data_start_skan = document.getElementById('data_start')
+
+
+const cmaxUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cmax';
+const cappiUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cappi';
+const ehtUrl = 'https://meteo.imgw.pl/api/radars/v1/list/eht';
+const sriUrl = 'https://meteo.imgw.pl/api/radars/v1/list/sri';
+const pacUrl = 'https://meteo.imgw.pl/api/radars/v1/list/pac';
+const zhailUrl = 'https://meteo.imgw.pl/api/radars/v1/list/zhail';
+
+var radar_check = cmaxUrl; // Domyślny URL to cmax
+
+let tablica2 = [];
+let tablica = []; // Zmieniono na []
+let cmaxData = null; 
+let cappiData = null; 
+let ehtData = null;
+let sriData = null;
+let pacData = null;
+let zhailData = null;
+let playerObject = null; // Dodano inicjalizację playera
+let powiekszony = false;
+
+
+function radar_checked() {
+    // Ukryj wszystkie tabelki
+    document.getElementById('cmax_table').style.display = 'none';
+    document.getElementById('eht_table').style.display = 'none';
+    document.getElementById('sri_table').style.display = 'none';
+    document.getElementById('pac_table').style.display = 'none';
+    document.getElementById('zhail_table').style.display = 'none';
+
+    if (document.getElementById('cappi').checked) {
+        radar_check = cappiUrl;
+        document.getElementById('cmax_table').style.display = 'block';
+        tablica = tablica2;
+        if (cappiData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(cappiData);
+        }
+    } else if (document.getElementById('cmax').checked) {
+        radar_check = cmaxUrl;
+        document.getElementById('cmax_table').style.display = 'block';
+        tablica = tablica2;
+        if (cmaxData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(cmaxData);
+        }
+    } else if (document.getElementById('eht').checked) {
+        radar_check = ehtUrl;
+        document.getElementById('eht_table').style.display = 'block';
+        tablica = tablica2;
+        if (ehtData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(ehtData);
+        }
+    } else if (document.getElementById('sri').checked) {
+        radar_check = sriUrl;
+        document.getElementById('sri_table').style.display = 'block';
+        tablica = tablica2;
+        if (sriData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(sriData);
+        }
+    } else if (document.getElementById('pac').checked) {
+        radar_check = pacUrl;
+        document.getElementById('pac_table').style.display = 'block';
+        tablica = tablica2;
+        if (pacData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(pacData);
+        }
+    } else if (document.getElementById('zhail').checked) {
+        radar_check = zhailUrl;
+        document.getElementById('zhail_table').style.display = 'block';
+        tablica = tablica2;
+        if (zhailData === null) {
+            pobierzDane();
+        } else {
+            przetworzDane(zhailData);
+        }
+    }
+}
+
+function maps()
+{
+    var obj2= document.getElementById("mapa");
+    localStorage.setItem('selectedMap', obj2.value);
+    View_map();
+}
+
+window.onload = function() {
+    View_map();
+};
+
+document.getElementById('downloadRadar').addEventListener('click', function() {
+    const obrazRadaru = document.getElementById('radar');
+    const urlObrazu = obrazRadaru.src;
+    const nazwaPliku = 'skan_radaru_' + Date.now() + '.png'; // Unikalna nazwa pliku
+
+    let a = document.createElement('a');
+    a.href = urlObrazu;
+    a.download = nazwaPliku;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
+
+function View_map() {
+    var choseMap = localStorage.getItem('selectedMap');
+    if (choseMap) {
+        var mapaSelect = document.getElementById('mapa');
+        mapaSelect.value = choseMap;
+        var obj1 = document.getElementById("radar-background");
+        obj1.src = choseMap;
+    }
+}
+
+function zmienRozmiarRadaru(element) {
+    const r_lay0 = document.getElementById('radar-background');
+    const r_lay1 = document.getElementById('radar');
+
+    if (element.checked) {
+        r_lay0.style.width = '1000px';
+        r_lay1.style.width = '1000px';
+    } else {
+        r_lay0.style.width = '100%';
+        r_lay1.style.width = '100%';
+    }
+}
+
+function obslugaPowieksz(element) {
+    const powiekszContainer = document.getElementById('powieksz_container');
+    const powiekszInput = document.getElementById('powieksz');
+    const powiekszSterujacy = document.getElementById('powieksz_sterujacy');
+
+    if (element.checked) {
+        powiekszContainer.style.display = 'block';
+        powiekszInput.checked = true; // Zaznacz podręczny
+        zmienRozmiarRadaru(powiekszInput); // Zmień rozmiar
+    } else {
+        powiekszContainer.style.display = 'none';
+        powiekszInput.checked = false; // Odznacz podręczny
+        zmienRozmiarRadaru(powiekszInput); // Zmień rozmiar
+        if (element.id === 'powieksz') { // Dodano warunek
+            powiekszSterujacy.checked = false; // Odznacz główny
+        }
+    }
+}
+
+
+
+var lista;
+
+// Funkcja do pobierania danych
+async function pobierzDane() {
+    try {
+        var odpowiedz = await fetch(radar_check);
+        if (!odpowiedz.ok) {
+            throw new Error(`Błąd HTTP! status: ${odpowiedz.status}`);
+        } 
+        var dane = await odpowiedz.json();
+        // Zapisz pobrane dane
+        if (radar_check === cmaxUrl) {
+            cmaxData = dane;
+        } else if (radar_check === cappiUrl) {
+            cappiData = dane;
+        } else if (radar_check === ehtUrl) {
+            ehtData = dane;
+        } else if (radar_check === sriUrl) {
+            sriData = dane;
+        } else if (radar_check === pacUrl) {
+            pacData = dane;
+        } else if (radar_check === zhailUrl) {
+            zhailData = dane;
+        }
+        przetworzDane(dane);
+    } catch (error) {
+        console.error('Wystąpił błąd:', error);
+    }
+}
+
+
+function przetworzDane(dane) {
+
+const maxElementy = 84;
+tablica = [];
+// Wyczyść tablicę przed dodaniem nowych danych
+tablica.push({ time: null, image: null, data: null }); // Dodano null dla data
+
+let lista;
+if (radar_check === cmaxUrl) {
+    lista = dane.cmax.list;
+} else if (radar_check === cappiUrl) {
+    lista = dane.cappi.list;
+} else if (radar_check === ehtUrl) {
+    lista = dane.eht.list;
+} else if (radar_check === sriUrl) {
+    lista = dane.sri.list;
+} else if (radar_check === pacUrl) {
+    lista = dane.pac.list;
+} else if (radar_check === zhailUrl) {
+    lista = dane.zhail.list;
+}
+
+lista.forEach(element => {
+    var dataObrazu = new Date(element.date * 1000);
+    var czasHHMM = `${String(dataObrazu.getHours()).padStart(2, '0')}:${String(dataObrazu.getMinutes()).padStart(2, '0')}`;
+    var imageUrl = element.url;
+    // Dodano wyodrębnienie daty w formacie RRRR-MM-DD
+    var dataRRMMDD = `${String(dataObrazu.getDate()).padStart(2, '0')}-${String(dataObrazu.getMonth() + 1).padStart(2, '0')}-${dataObrazu.getFullYear()}`;
+    if (tablica.length < maxElementy) {
+        tablica.push({ time: czasHHMM, image: imageUrl, data: dataRRMMDD }); // Zapis daty
+    }
+});
+tablica.push({ time: null, image: null, data: null });  // Dodano null dla data
+
+// Utwórz instancję playera i rozpocznij odtwarzanie po przetworzeniu danych
+if (!playerObject) {
+    playerObject = new Player(tablica);
+    // Inicjalizacja playera z aktualnymi danymi tylko raz
+}
+else{
+    playerObject.radars = tablica;
+    // Aktualizuj dane w istniejącym playerze
+}
+
+var ostatniObraz = tablica[tablica.length - 2];
+if (ostatniObraz && ostatniObraz.image) {
+    var obrazElement = document.getElementById('radar');
+    obrazElement.src = ostatniObraz.image;
+    var czasElementData = document.getElementById('data_start_data');
+    var czasElementTime = document.getElementById('data_start_time');
+    // Dodaj sprawdzenie, czy element istnieje
+    if (czasElementData && czasElementTime) {
+        // Wyświetlenie daty i godziny w oddzielnych divach
+        czasElementData.textContent = ostatniObraz.data;
+        czasElementTime.textContent = ostatniObraz.time;
+    }
+}
+console.log(tablica);
+}
+
+// Pobierz dane cmax na początku
+pobierzDane();  
+
+function Player(radars) {
+    this.paused = true;
+    this.delay = false;
+    this.current = 83;
+    this.ivID;
+    this.radars = radars;
+
+    this.play = function (param) {
+        if (!this.radars || this.radars.length === 0) {
+            console.warn("Player.play called with empty or undefined radars array.");
+            return;
+        }
+
+        if (this.delay == true) {
+            this.delay = false;
+            window.clearInterval(this.ivID);
+            this.ivID = window.setInterval(playFc, 300);
+        }
+
+        if (param == -1) this.current--; else this.current++;
+
+        if (this.current < 1) this.current = 1;
+        if (this.current >= this.radars.length) this.current = this.radars.length - 2;
+        if (this.radars[this.current] === undefined || this.radars[this.current].time == null) {
+            if ((param != 1) && (param != -1)) {
+                this.current = 1;
+            } else this.current--;
+        }
+
+
+        let radarElement = document.getElementById('radar');
+    let timetextElementData = document.getElementById('data_start_data'); // Zmiana ID
+    let timetextElementTime = document.getElementById('data_start_time'); // Zmiana ID
+    if (this.radars[this.current] && radarElement && timetextElementData && timetextElementTime) { // Dodano sprawdzenie obu elementów
+        radarElement.src = this.radars[this.current].image;
+        radarElement.alt = this.radars[this.current].time;
+        timetextElementData.textContent = this.radars[this.current].data; // Dodano aktualizację daty
+        timetextElementTime.textContent = this.radars[this.current].time; // Zmiana na time
+    }
+
+
+
+        if ((param != 1) && (param != -1)) {
+            if (this.paused == true) {
+                if (szybko.checked == false)
+                    this.ivID = window.setInterval(playFc, 300);  //slow
+                else this.ivID = window.setInterval(playFc, 80); //fast
+
+                this.paused = false;
+            } else {
+                if (petla.checked == false) {
+                    if (this.radars[this.current + 1] === undefined || this.radars[this.current+1].time == null)
+                         this.pushEvent();
+                }
+            }
+        }
+    }
+
+    this.pushEvent = function () {
+        if (this.paused == true) {
+            this.play();
+            document.getElementById('pushButton').innerHTML = 'pauza ⏸';
+        } else {
+            window.clearInterval(this.ivID);
+            this.paused = true;
+            document.getElementById('pushButton').innerHTML = 'odtwarzaj ►';
+        }
+    }
+
+    this.makeStep = function (param) {
+        this.paused = false;
+        this.pushEvent();
+        this.play(param);
+    }
+}
+
+
+function playFc() {
+    playerObject.play();
+}
+
+function goToScan(indexOffset) {
+    const targetIndex = playerObject.radars.length + indexOffset;
+    playerObject.current = targetIndex;
+
+    const radarElement = document.getElementById('radar');
+    const timetextElementData = document.getElementById('data_start_data'); // Zmiana ID
+    const timetextElementTime = document.getElementById('data_start_time'); // Zmiana ID
+    if (radarElement && timetextElementData && timetextElementTime && playerObject.radars[playerObject.current]) { // Dodano sprawdzenie obu elementów
+        radarElement.src = playerObject.radars[playerObject.current].image;
+        radarElement.alt = playerObject.radars[playerObject.current].time;
+        timetextElementData.textContent = playerObject.radars[playerObject.current].data; // Dodano aktualizację daty
+        timetextElementTime.textContent = playerObject.radars[playerObject.current].time; // Zmiana na time
+    }
+}
+
+
+</script>
+
+
+        </div>
+            <div id="m_bottom">
+                <br><br>MiniRadar tylko wizualizuje skany radarowe na statycznej mapie. Źródłem i właścicielem danych radarowych jest Instytut Meteorologi i Gospodarki Wodnej - Państwowy Instytut Badawczy (IMGW-PIB)
+                <br><br> <h4> MiniRadar <div id="rok"></div>
+				
+                <script type="text/javascript">     
+				var year = document.getElementById('rok')
+				year.innerHTML = date.getFullYear(); 
+				</script>
+
+
+
+
+                
+            </h4>
+            <br>
+            </div>
+       </div>
+  
+    
+</body></html>
