@@ -239,11 +239,12 @@
             }
 
         .radio__20 {
-            width: 10%;
+            width: 100%;
             }
 
-        .radio__10 {
-            width: 65%;
+        .mapy {
+            background-color: #4ab124;
+		    box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
             }
             
         .radio__20b {
@@ -549,9 +550,21 @@
             
                     </div>
 
+                    <div id="m_menu" class="radio" style="margin: 5px 0 5px 0;">
 
+                    <br><label class="radio__label radio__20 mapy">Przezroczystość
+                    <input type="range" id="opacitySlider" min="0.1" max="1" step="0.1" value="1"></label>
 
-                <p style="text-align: right; font-size: 14px; margin-bottom: -10px; padding-top: 7px;">Mapa:&nbsp;&nbsp;</p>
+                
+                    <label class="radio__label radio__20 mapy" style="margin-right: 5px;">
+                    Mapa: <select id="mapa" onchange="maps()">
+                        <option value="images/mapadal2.png">Jasna IMGW</option>
+                        <option value="images/mapadal4.png">Ciemna IMGW</option>
+                        <option value="images/mapamapz.jpg">Prosta</option>
+                        <option value="images/applemap.jpg">Apple Maps</option>
+                        <option value="images/fizyczna.jpg">Fizyczna</option>
+                      </select></label> </div>
+
                 <br>
                 <div id="m_menu" class="radio">
                     <input id="first_scan" type="button" name="first_scan" class="radio__input" onclick="goToScan(-84)">
@@ -575,19 +588,16 @@
                         <path d="M21 21L15.8033 15.8033M7.5 10.5H13.5M15.8033 15.8033C17.1605 14.4461 18 12.5711 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18C12.5711 18 14.4461 17.1605 15.8033 15.8033Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg></label>
 					</div>
+
+                    <input id="downloadRadar" type="button" name="downloadRadar" class="radio__input">
+					<label class="radio__label radio__20" for="downloadRadar"  style="border-right: 5px solid #555c63;">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                        <path id="Vector" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></label>
 					
-                    <label class="radio__label" style="border-left: 5px solid #555c63;">
-                    <select id="mapa" onchange="maps()">
-                        <option value="images/mapadal2.png">Jasna IMGW</option>
-                        <option value="images/mapadal4.png">Ciemna IMGW</option>
-                        <option value="images/mapamapz.jpg">Prosta</option>
-                        <option value="images/applemap.jpg">Apple Maps</option>
-                        <option value="images/fizyczna.jpg">Fizyczna</option>
-                      </select></label>
+                    
 
                 </div>
-
-                <button id="downloadRadar">Pobierz skan</button>
 
 
             </div>
@@ -615,7 +625,7 @@ var element = document.getElementById('full_date')
 var data_start_skan = document.getElementById('data_start')
 
 
-const cmaxUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cmax';
+const cmaxUrl = 'jhttps://meteo.imgw.pl/api/radars/v1/list/cmax';
 const cappiUrl = 'https://meteo.imgw.pl/api/radars/v1/list/cappi';
 const ehtUrl = 'https://meteo.imgw.pl/api/radars/v1/list/eht';
 const sriUrl = 'https://meteo.imgw.pl/api/radars/v1/list/sri';
@@ -712,17 +722,60 @@ window.onload = function() {
     View_map();
 };
 
+const radarImage = document.getElementById('radar');
+const opacitySlider = document.getElementById('opacitySlider');
+opacitySlider.addEventListener('input', function() {
+    radarImage.style.opacity = opacitySlider.value;
+});
+
+<!-- Funkcja pobierania skanu radarowego -->
+
 document.getElementById('downloadRadar').addEventListener('click', function() {
     const obrazRadaru = document.getElementById('radar');
     const urlObrazu = obrazRadaru.src;
-    const nazwaPliku = 'skan_radaru_' + Date.now() + '.png'; // Unikalna nazwa pliku
+    let nazwaPliku = '';
 
-    let a = document.createElement('a');
-    a.href = urlObrazu;
-    a.download = nazwaPliku;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    // Wyodrębnienie nazwy pliku z URL
+    const urlParts = urlObrazu.split('/');
+    const oryginalnaNazwaPliku = urlParts[urlParts.length - 1];
+
+    let typRadaru = '';
+
+    if (document.getElementById('cmax').checked) {
+        typRadaru = 'cmax';
+    } else if (document.getElementById('cappi').checked) {
+        typRadaru = 'cappi';
+    } else if (document.getElementById('eht').checked) {
+        typRadaru = 'eht';
+    } else if (document.getElementById('sri').checked) {
+        typRadaru = 'sri';
+    } else if (document.getElementById('pac').checked) {
+        typRadaru = 'pac';
+    } else if (document.getElementById('zhail').checked) {
+        typRadaru = 'zhail';
+    }
+
+    // Dodanie podkreślenia między datą a godziną (8 znaków daty i 4 znaki godziny)
+    const data = oryginalnaNazwaPliku.substring(0, 8); // Pierwsze 8 znaków
+    const godzina = oryginalnaNazwaPliku.substring(8, 12); // Następne 4 znaki
+
+    nazwaPliku = typRadaru + '_skan_radaru_' + data + '_' + godzina;
+
+    fetch(urlObrazu, {
+        method: 'GET',
+        mode: 'cors'
+    })
+    .then(response => response.blob())
+    .then(blob => {
+        let a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = nazwaPliku;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    })
+    .catch(error => {
+    });
 });
 
 function View_map() {
