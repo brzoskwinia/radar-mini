@@ -117,6 +117,7 @@
             position: relative;
             height: 102%;
             margin-left: -10%;
+            margin-bottom: -3px;
         }
 
         .radar-lay0 {
@@ -256,12 +257,13 @@
         .box19 { background-color: #f646d2; }
         .box20 { background-color: #ff69e6; }
     
-        .slider {
+       .slider {
             width: 70%;
             height: px;
             -webkit-appearance: none;
             background: #d3d3d3;
             outline: none;
+            border-radius: 5px;
         }
     
         .slider::-webkit-slider-thumb {
@@ -270,6 +272,7 @@
             height: 20px;
             background: #4ab124;
             cursor: pointer;
+            border-radius: 5px;
         }
 
 </style>
@@ -316,7 +319,7 @@
                 </div>
                 
     <div id="radar-container">
-        <img class="radar-lay0" width="100%" id="radar-background" src="./images/mapadal2.png">
+        <img class="radar-lay0" width="100%" id="radar-background" src="./images/mapajasna.png">
         <img class="radar-lay1" width="100%" id="radar" alt="" src="images/brakdanych.svg">
         <div class="radar-space"></div>
     </div>
@@ -346,7 +349,7 @@
     <div id="m_bottom">
         <br>
         <div id="radar_tables_container">
-            <table id="cmax_table" style="display: block; margin-left: 10px; overflow:auto">
+            <table id="cmax_cappi_table" style="display: block; margin-left: 10px; overflow:auto">
                         <tr>
                             <td></td>
                             <td><span class="box box1"></span></td><td><span class="box box2"></span></td>
@@ -436,9 +439,9 @@
                     <input id="petla" type="checkbox" name="petla" class="radio_input" onclick="radar_checked()">
 					<label class="menu_label menu_width" for="petla"><p class="p_center" style="margin-top: -4px;">►<span style="font-size: 20px;">&nbsp;↻</span></p></label>
                     <input id="first_scan" type="button" name="first_scan" class="radio_input" onclick="goToScan(-84)">
-					<label class="menu_label menu_width" style="background: #82d318" for="first_scan"><p class="p_center">l◄                    </p></label>
+					<label class="menu_label menu_width" style="background: #82d318" for="first_scan"><p class="p_center">|◄</p></label>
                     <input id="now_scan" type="button" name="now_scan" class="radio_input" onclick="goToScan(-2)">
-					<label class="menu_label menu_width" style="background: #82d318" for="now_scan"><p class="p_center">►l</p></label>
+					<label class="menu_label menu_width" style="background: #82d318" for="now_scan"><p class="p_center">►|</p></label>
                     <input id="powieksz_sterujacy" type="checkbox" name="powieksz_sterujacy" class="radio_input" onclick="obslugaPowieksz(this)">
 					<label class="menu_label menu_width" for="powieksz_sterujacy"><p class="p_center">
                             <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none">
@@ -462,16 +465,16 @@
                     <br><label class="menu_label menu_width">
                             <svg fill="#ffffff" width="20px" height="20px" viewBox="0 0 24 24">
                             <path d="M12,2 C17.3,7.0 20,11.0 20,14 C20,18.4 16.4,22 12,22 C7.5,22 4,18.4 4,14 C4,11.0 6.6,7.0 12,2 Z M12.5,5.34 L12,4.79 L11.78,5.01 C8.50,8.34 6.63,11.05 6.13,13.00 L17.86,13.00 C17.37,11.11 15.62,8.52 12.54,5.34 L12.54,5.34 Z"/>
-                            </svg>
+                            </svg>&nbsp;&nbsp;
                         <input class="slider" type="range" id="opacitySlider" min="0.1" max="1" step="0.1" value="1"></label>
                         
                         <label class="menu_label menu_width" style="border-right: 5px solid #555c63;">
-                    Mapa: <select id="mapa" onchange="maps()">
-                                <option value="images/mapadal2.png">Jasna IMGW</option>
-                                <option value="images/mapadal4.png">Ciemna IMGW</option>
-                                <option value="images/mapamapz.jpg">Prosta</option>
-                                <option value="images/applemap.jpg">Apple Maps</option>
-                                <option value="images/fizyczna.jpg">Fizyczna</option>
+                    Mapa:&nbsp;&nbsp;&nbsp;&nbsp;<select id="mapa" onchange="maps()">
+                                <option value="images/mapajasna.png">Jasna IMGW</option>
+                                <option value="images/mapaciemna.png">Ciemna IMGW</option>
+                                <option value="images/mapaprosta.jpg">Prosta</option>
+                                <option value="images/mapaapple.jpg">Apple Maps</option>
+                                <option value="images/mapafizyczna.jpg">Fizyczna</option>
                             </select>
                         </label>
                 </div>
@@ -503,7 +506,7 @@ const zhailUrl = 'https://meteo.imgw.pl/api/radars/v1/list/zhail';
 var radar_check = cmaxUrl; // Domyślny URL to cmax
 
 let tablica2 = [];
-let tablica = []; // Zmieniono na []
+let tablica = [];
 let cmaxData = null; 
 let cappiData = null; 
 let ehtData = null;
@@ -516,7 +519,7 @@ let powiekszony = false;
 
 function radar_checked() {
     // Ukryj wszystkie tabelki
-    document.getElementById('cmax_table').style.display = 'none';
+    document.getElementById('cmax_cappi_table').style.display = 'none';
     document.getElementById('eht_table').style.display = 'none';
     document.getElementById('sri_table').style.display = 'none';
     document.getElementById('pac_table').style.display = 'none';
@@ -524,7 +527,7 @@ function radar_checked() {
 
     if (document.getElementById('cappi').checked) {
         radar_check = cappiUrl;
-        document.getElementById('cmax_table').style.display = 'block';
+        document.getElementById('cmax_cappi_table').style.display = 'block';
         tablica = tablica2;
         if (cappiData === null) {
             pobierzDane();
@@ -533,7 +536,7 @@ function radar_checked() {
         }
     } else if (document.getElementById('cmax').checked) {
         radar_check = cmaxUrl;
-        document.getElementById('cmax_table').style.display = 'block';
+        document.getElementById('cmax_cappi_table').style.display = 'block';
         tablica = tablica2;
         if (cmaxData === null) {
             pobierzDane();
@@ -697,88 +700,85 @@ var lista;
 
 async function pobierzDane() {
     try {
-        var odpowiedz = await fetch(radar_check);
+        const odpowiedz = await fetch(radar_check);
         if (!odpowiedz.ok) {
             throw new Error(`Błąd HTTP! status: ${odpowiedz.status}`);
-        } 
-        var dane = await odpowiedz.json();
-        // Zapisz pobrane dane
-        if (radar_check === cmaxUrl) {
-            cmaxData = dane;
-        } else if (radar_check === cappiUrl) {
-            cappiData = dane;
-        } else if (radar_check === ehtUrl) {
-            ehtData = dane;
-        } else if (radar_check === sriUrl) {
-            sriData = dane;
-        } else if (radar_check === pacUrl) {
-            pacData = dane;
-        } else if (radar_check === zhailUrl) {
-            zhailData = dane;
         }
+        const dane = await odpowiedz.json();
+
+        // Mapa URL-i do zmiennych przechowujących dane
+        const dataMap = {
+            [cmaxUrl]: 'cmaxData',
+            [cappiUrl]: 'cappiData',
+            [ehtUrl]: 'ehtData',
+            [sriUrl]: 'sriData',
+            [pacUrl]: 'pacData',
+            [zhailUrl]: 'zhailData'
+        };
+
+        // Zapisz pobrane dane, jeśli URL znajduje się w mapie
+        if (dataMap.hasOwnProperty(radar_check)) {
+            window[dataMap[radar_check]] = dane;
+        }
+
         przetworzDane(dane);
+
     } catch (error) {
         console.error('Wystąpił błąd:', error);
     }
 }
 
 function przetworzDane(dane) {
-const maxElementy = 84;
-tablica = [];
-// Wyczyść tablicę przed dodaniem nowych danych
-tablica.push({ time: null, image: null, data: null }); // Dodano null dla data
+    const maxElementy = 84;
+    const listaKluczy = {
+        [cmaxUrl]: 'cmax',
+        [cappiUrl]: 'cappi',
+        [ehtUrl]: 'eht',
+        [sriUrl]: 'sri',
+        [pacUrl]: 'pac',
+        [zhailUrl]: 'zhail'
+    };
 
-let lista;
-if (radar_check === cmaxUrl) {
-    lista = dane.cmax.list;
-} else if (radar_check === cappiUrl) {
-    lista = dane.cappi.list;
-} else if (radar_check === ehtUrl) {
-    lista = dane.eht.list;
-} else if (radar_check === sriUrl) {
-    lista = dane.sri.list;
-} else if (radar_check === pacUrl) {
-    lista = dane.pac.list;
-} else if (radar_check === zhailUrl) {
-    lista = dane.zhail.list;
-}
+    let lista = dane?.[listaKluczy[radar_check]]?.list;
 
-lista.forEach(element => {
-    var dataObrazu = new Date(element.date * 1000);
-    var czasHHMM = `${String(dataObrazu.getHours()).padStart(2, '0')}:${String(dataObrazu.getMinutes()).padStart(2, '0')}`;
-    var imageUrl = element.url;
-    // Dodano wyodrębnienie daty w formacie RRRR-MM-DD
-    var dataRRMMDD = `${String(dataObrazu.getDate()).padStart(2, '0')}-${String(dataObrazu.getMonth() + 1).padStart(2, '0')}-${dataObrazu.getFullYear()}`;
-    if (tablica.length < maxElementy) {
-        tablica.push({ time: czasHHMM, image: imageUrl, data: dataRRMMDD }); // Zapis daty
+    if (!lista) {
+        console.warn(`Nie znaleziono listy dla URL: ${radar_check}`);
+        return;
     }
-});
-tablica.push({ time: null, image: null, data: null });  // Dodano null dla data
 
-// Utwórz instancję playera i rozpocznij odtwarzanie po przetworzeniu danych
-if (!playerObject) {
-    playerObject = new Player(tablica);
-    // Inicjalizacja playera z aktualnymi danymi tylko raz
-}
-else{
-    playerObject.radars = tablica;
-    // Aktualizuj dane w istniejącym playerze
-}
+    tablica = [{ time: null, image: null, data: null }]; // Używamy teraz globalnej (lub zewnętrznej) zmiennej tablica
 
-var ostatniObraz = tablica[tablica.length - 2];
-if (ostatniObraz && ostatniObraz.image) {
-    var obrazElement = document.getElementById('radar');
-    obrazElement.src = ostatniObraz.image;
-    var czasElementData = document.getElementById('data_start_data');
-    var czasElementTime = document.getElementById('data_start_time');
-    // Dodaj sprawdzenie, czy element istnieje
-    if (czasElementData && czasElementTime) {
-        // Wyświetlenie daty i godziny w oddzielnych divach
-        czasElementData.textContent = ostatniObraz.data;
-        czasElementTime.textContent = ostatniObraz.time;
+    lista.forEach(element => {
+        const dataObrazu = new Date(element.date * 1000);
+        const czasHHMM = `${String(dataObrazu.getHours()).padStart(2, '0')}:${String(dataObrazu.getMinutes()).padStart(2, '0')}`;
+        const imageUrl = element.url;
+        const dataRRMMDD = `${String(dataObrazu.getDate()).padStart(2, '0')}-${String(dataObrazu.getMonth() + 1).padStart(2, '0')}-${dataObrazu.getFullYear()}`;
+
+        if (tablica.length < maxElementy) {
+            tablica.push({ time: czasHHMM, image: imageUrl, data: dataRRMMDD });
+        }
+    });
+
+    tablica.push({ time: null, image: null, data: null });
+
+    if (!playerObject) {
+        playerObject = new Player(tablica);
+    } else {
+        playerObject.radars = tablica;
     }
-}
-console.log(tablica);
+
+    const ostatniObraz = tablica[tablica.length - 2];
+    if (ostatniObraz?.image) {
+        const obrazElement = document.getElementById('radar');
+        obrazElement.src = ostatniObraz.image;
+        const czasElementData = document.getElementById('data_start_data');
+        const czasElementTime = document.getElementById('data_start_time');
+        if (czasElementData && czasElementTime) {
+            czasElementData.textContent = ostatniObraz.data;
+            czasElementTime.textContent = ostatniObraz.time;
+        }
+    }
+    console.log(tablica);
 }
 
 // Pobierz dane cmax na początku
@@ -841,7 +841,7 @@ function Player(radars) {
     this.pushEvent = function () {
         if (this.paused == true) {
             this.play();
-            document.getElementById('pushButton').innerHTML = 'pauza ⏸';
+            document.getElementById('pushButton').innerHTML = 'pauza ▌▌';
         } else {
             window.clearInterval(this.ivID);
             this.paused = true;
