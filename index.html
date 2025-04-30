@@ -346,8 +346,7 @@
         </a>
     </div>
 
-    <div id="m_bottom">
-        <br>
+    <div id="m_bottom"><br>
         <div id="radar_tables_container">
             <table id="cmax_cappi_table" style="display: block; margin-left: 10px; overflow:auto">
                         <tr>
@@ -434,10 +433,10 @@
 
                 <br>
                 <div id="m_menu" class="radio">
-                    <input id="szybko" type="checkbox" name="szybko" class="radio_input" onclick="radar_checked()">
-					<label class="menu_label menu_width" for="szybko"><p class="p_center">►&nbsp;x4</p></label>
-                    <input id="petla" type="checkbox" name="petla" class="radio_input" onclick="radar_checked()">
-					<label class="menu_label menu_width" for="petla"><p class="p_center" style="margin-top: -4px;">►<span style="font-size: 20px;">&nbsp;↻</span></p></label>
+                    <input id="speed" type="checkbox" name="speed" class="radio_input" onclick="radar_checked()">
+					<label class="menu_label menu_width" for="speed"><p class="p_center">►&nbsp;x4</p></label>
+                    <input id="loop" type="checkbox" name="loop" class="radio_input" onclick="radar_checked()">
+					<label class="menu_label menu_width" for="loop"><p class="p_center" style="margin-top: -4px;">►<span style="font-size: 20px;">&nbsp;↻</span></p></label>
                     <input id="first_scan" type="button" name="first_scan" class="radio_input" onclick="goToScan(-84)">
 					<label class="menu_label menu_width" style="background: #82d318" for="first_scan"><p class="p_center">|◄</p></label>
                     <input id="now_scan" type="button" name="now_scan" class="radio_input" onclick="goToScan(-2)">
@@ -513,12 +512,13 @@ let ehtData = null;
 let sriData = null;
 let pacData = null;
 let zhailData = null;
-let playerObject = null; // Dodano inicjalizację playera
+let playerObject = null;
 let powiekszony = false;
+var lista;
 
 
 function radar_checked() {
-    // Ukryj wszystkie tabelki
+    // Ukryj wszystkie legendy
     document.getElementById('cmax_cappi_table').style.display = 'none';
     document.getElementById('eht_table').style.display = 'none';
     document.getElementById('sri_table').style.display = 'none';
@@ -582,6 +582,7 @@ function radar_checked() {
     }
 }
 
+    //Funkcja wyboru mapy
 function maps()
 {
     var obj2= document.getElementById("mapa");
@@ -592,6 +593,7 @@ function maps()
 window.onload = function() {
     View_map();
 };
+    //Przezroczystość radaru
 
 const radarImage = document.getElementById('radar');
 const opacitySlider = document.getElementById('opacitySlider');
@@ -602,42 +604,39 @@ opacitySlider.addEventListener('input', function() {
     //Funkcja pobierania skanu radarowego
 
 document.getElementById('downloadRadar').addEventListener('click', function() {
-    const obrazRadaru = document.getElementById('radar');
-    let urlObrazu = obrazRadaru.src;
-    let nazwaPliku = '';
+    const radarScan = document.getElementById('radar');
+    let urlScan = radarScan.src;
+    let nameFile_download = '';
 
-    // Zmiana http na https tylko dla pobieranego URL
-  if (urlObrazu.startsWith('http://')) {
-  urlObrazu = urlObrazu.replace('http://', 'https://');
+  if (urlScan.startsWith('http://')) {
+  urlScan = urlScan.replace('http://', 'https://');  // Zmiana http na https tylko dla pobieranego URL
   }
 
-    // Wyodrębnienie nazwy pliku z URL
-    const urlParts = urlObrazu.split('/');
-    const oryginalnaNazwaPliku = urlParts[urlParts.length - 1];
+ const urlParts = urlScan.split('/');   // Wyodrębnienie nazwy pliku z URL
+    const radar_filename_fromUrl = urlParts[urlParts.length - 1];
 
-    let typRadaru = '';
+    let typeRadar = '';
 
     if (document.getElementById('cmax').checked) {
-        typRadaru = 'cmax';
+        typeRadar = 'cmax';
     } else if (document.getElementById('cappi').checked) {
-        typRadaru = 'cappi';
+        typeRadar = 'cappi';
     } else if (document.getElementById('eht').checked) {
-        typRadaru = 'eht';
+        typeRadar = 'eht';
     } else if (document.getElementById('sri').checked) {
-        typRadaru = 'sri';
+        typeRadar = 'sri';
     } else if (document.getElementById('pac').checked) {
-        typRadaru = 'pac';
+        typeRadar = 'pac';
     } else if (document.getElementById('zhail').checked) {
-        typRadaru = 'zhail';
+        typeRadar = 'zhail';
     }
 
-    // Dodanie podkreślenia między datą a godziną (8 znaków daty i 4 znaki godziny)
-    const data = oryginalnaNazwaPliku.substring(0, 8); // Pierwsze 8 znaków
-    const godzina = oryginalnaNazwaPliku.substring(8, 12); // Następne 4 znaki
+  const data = radar_filename_fromUrl.substring(0, 8);  // Wyodrębnienie daty i godziny z nazwy pliku
+    const godzina = radar_filename_fromUrl.substring(8, 12);
 
-    nazwaPliku = typRadaru + '_skan_radaru_' + data + '_' + godzina;
+    nameFile_download = typeRadar + '_' + data + '_' + godzina;
 
-    fetch(urlObrazu, {
+    fetch(urlScan, {
         method: 'GET',
         mode: 'cors'
     })
@@ -645,7 +644,7 @@ document.getElementById('downloadRadar').addEventListener('click', function() {
     .then(blob => {
         let a = document.createElement('a');
         a.href = window.URL.createObjectURL(blob);
-        a.download = nazwaPliku;
+        a.download = nameFile_download;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -654,6 +653,7 @@ document.getElementById('downloadRadar').addEventListener('click', function() {
     });
 });
 
+    //Zapis wybranej mapy w localStorage
 function View_map() {
     var choseMap = localStorage.getItem('selectedMap');
     if (choseMap) {
@@ -664,6 +664,7 @@ function View_map() {
     }
 }
 
+    //Funckja powiększająca mapę z radarem
 function zmienRozmiarRadaru(element) {
     const r_lay0 = document.getElementById('radar-background');
     const r_lay1 = document.getElementById('radar');
@@ -677,27 +678,27 @@ function zmienRozmiarRadaru(element) {
     }
 }
 
+    //Funkcja obsługi powiększania
 function obslugaPowieksz(element) {
-    const powiekszContainer = document.getElementById('enlarge_container');
-    const powiekszInput = document.getElementById('powieksz');
-    const powiekszSterujacy = document.getElementById('powieksz_sterujacy');
+    const zoomContainer = document.getElementById('enlarge_container');
+    const zoomInput = document.getElementById('powieksz');
+    const zoomControl = document.getElementById('powieksz_sterujacy');
 
     if (element.checked) {
-        powiekszContainer.style.display = 'block';
-        powiekszInput.checked = true; // Zaznacz podręczny
-        zmienRozmiarRadaru(powiekszInput); // Zmień rozmiar
+        zoomContainer.style.display = 'block';
+        zoomInput.checked = true; // Zaznacz podręczny
+        zmienRozmiarRadaru(zoomInput); // Zmień rozmiar
     } else {
-        powiekszContainer.style.display = 'none';
-        powiekszInput.checked = false; // Odznacz podręczny
-        zmienRozmiarRadaru(powiekszInput); // Zmień rozmiar
+        zoomContainer.style.display = 'none';
+        zoomInput.checked = false; // Odznacz podręczny
+        zmienRozmiarRadaru(zoomInput); // Zmień rozmiar
         if (element.id === 'powieksz') { // Dodano warunek
-            powiekszSterujacy.checked = false; // Odznacz główny
+            zoomControl.checked = false; // Odznacz główny
         }
     }
 }
 
-var lista;
-
+    //Pobieranie listy z adresami url do skanów radarowych
 async function pobierzDane() {
     try {
         const odpowiedz = await fetch(radar_check);
@@ -706,7 +707,6 @@ async function pobierzDane() {
         }
         const dane = await odpowiedz.json();
 
-        // Mapa URL-i do zmiennych przechowujących dane
         const dataMap = {
             [cmaxUrl]: 'cmaxData',
             [cappiUrl]: 'cappiData',
@@ -728,9 +728,10 @@ async function pobierzDane() {
     }
 }
 
+    //Przetwarzanie danych radarowych (tworzenie tablicy z adresami url skanów radarowych, daty i godziny)
 function przetworzDane(dane) {
     const maxElementy = 84;
-    const listaKluczy = {
+    const listsRadars = {
         [cmaxUrl]: 'cmax',
         [cappiUrl]: 'cappi',
         [ehtUrl]: 'eht',
@@ -739,23 +740,23 @@ function przetworzDane(dane) {
         [zhailUrl]: 'zhail'
     };
 
-    let lista = dane?.[listaKluczy[radar_check]]?.list;
+    let lista = dane?.[listsRadars[radar_check]]?.list;
 
     if (!lista) {
         console.warn(`Nie znaleziono listy dla URL: ${radar_check}`);
         return;
     }
 
-    tablica = [{ time: null, image: null, data: null }]; // Używamy teraz globalnej (lub zewnętrznej) zmiennej tablica
+    tablica = [{ time: null, image: null, data: null }];
 
     lista.forEach(element => {
-        const dataObrazu = new Date(element.date * 1000);
-        const czasHHMM = `${String(dataObrazu.getHours()).padStart(2, '0')}:${String(dataObrazu.getMinutes()).padStart(2, '0')}`;
+        const dataScan = new Date(element.date * 1000);
+        const timeHHMM = `${String(dataScan.getHours()).padStart(2, '0')}:${String(dataScan.getMinutes()).padStart(2, '0')}`;
         const imageUrl = element.url;
-        const dataRRMMDD = `${String(dataObrazu.getDate()).padStart(2, '0')}-${String(dataObrazu.getMonth() + 1).padStart(2, '0')}-${dataObrazu.getFullYear()}`;
+        const dataRRMMDD = `${String(dataScan.getDate()).padStart(2, '0')}-${String(dataScan.getMonth() + 1).padStart(2, '0')}-${dataScan.getFullYear()}`;
 
         if (tablica.length < maxElementy) {
-            tablica.push({ time: czasHHMM, image: imageUrl, data: dataRRMMDD });
+            tablica.push({ time: timeHHMM, image: imageUrl, data: dataRRMMDD });
         }
     });
 
@@ -781,7 +782,7 @@ function przetworzDane(dane) {
     console.log(tablica);
 }
 
-// Pobierz dane cmax na początku
+    // Domyślne pobieranie listy url z danymi cmax po wczytaniu strony
 pobierzDane();  
 
 function Player(radars) {
@@ -814,23 +815,23 @@ function Player(radars) {
         }
 
     let radarElement = document.getElementById('radar');
-    let timetextElementData = document.getElementById('data_start_data'); // Zmiana ID
-    let timetextElementTime = document.getElementById('data_start_time'); // Zmiana ID
-    if (this.radars[this.current] && radarElement && timetextElementData && timetextElementTime) { // Dodano sprawdzenie obu elementów
+    let timetextElementData = document.getElementById('data_start_data');
+    let timetextElementTime = document.getElementById('data_start_time');
+    if (this.radars[this.current] && radarElement && timetextElementData && timetextElementTime) {
         radarElement.src = this.radars[this.current].image;
         radarElement.alt = this.radars[this.current].time;
-        timetextElementData.textContent = this.radars[this.current].data; // Dodano aktualizację daty
-        timetextElementTime.textContent = this.radars[this.current].time; // Zmiana na time
+        timetextElementData.textContent = this.radars[this.current].data;
+        timetextElementTime.textContent = this.radars[this.current].time;
     }
         if ((param != 1) && (param != -1)) {
             if (this.paused == true) {
-                if (szybko.checked == false)
+                if (speed.checked == false)
                     this.ivID = window.setInterval(playFc, 300);  //slow
                 else this.ivID = window.setInterval(playFc, 80); //fast
 
                 this.paused = false;
             } else {
-                if (petla.checked == false) {
+                if (loop.checked == false) {   //petla
                     if (this.radars[this.current + 1] === undefined || this.radars[this.current+1].time == null)
                          this.pushEvent();
                 }
@@ -860,18 +861,19 @@ function playFc() {
     playerObject.play();
 }
 
+    //Szybkie przeskoczenie do pierwszego albo ostatniego skanu radarowego
 function goToScan(indexOffset) {
     const targetIndex = playerObject.radars.length + indexOffset;
     playerObject.current = targetIndex;
 
     const radarElement = document.getElementById('radar');
-    const timetextElementData = document.getElementById('data_start_data'); // Zmiana ID
-    const timetextElementTime = document.getElementById('data_start_time'); // Zmiana ID
-    if (radarElement && timetextElementData && timetextElementTime && playerObject.radars[playerObject.current]) { // Dodano sprawdzenie obu elementów
+    const timetextElementData = document.getElementById('data_start_data');
+    const timetextElementTime = document.getElementById('data_start_time');
+    if (radarElement && timetextElementData && timetextElementTime && playerObject.radars[playerObject.current]) {
         radarElement.src = playerObject.radars[playerObject.current].image;
         radarElement.alt = playerObject.radars[playerObject.current].time;
-        timetextElementData.textContent = playerObject.radars[playerObject.current].data; // Dodano aktualizację daty
-        timetextElementTime.textContent = playerObject.radars[playerObject.current].time; // Zmiana na time
+        timetextElementData.textContent = playerObject.radars[playerObject.current].data;
+        timetextElementTime.textContent = playerObject.radars[playerObject.current].time;
     }
 }
 
