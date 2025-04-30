@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>sat24 PL</title>
+    <style>
+        #satelliteImage {
+            max-width: 100%;
+            height: auto;
+        }
+        #imageDateTime {
+			font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            font-size: 1.2em;
+            z-index: 10;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Pobieranie danych...</div>
+    <img id="satelliteImage" src="" alt="Najnowszy obraz satelitarny" class="hidden">
+    <p id="imageDateTime" class="hidden"></p>
+    <script>
+        const dataUrl = "https://www.sat24.com/radar/sat?north=55.82&south=47.19&east=26.54&zoom=7.3&west=12.62&timestamp=1717105500&timezone=Europe/Warsaw&culture=pl-PL&country=AA";
+        const baseUrl = "https://imn-api.meteoplaza.com/v4/nowcast/tiles";
+        // Use a CORS proxy to avoid "Access-Control-Allow-Origin" error.
+        const corsProxy = "https://corsproxy.io/?"; // Or any other CORS proxy
+
+        async function fetchSatelliteData() {
+            try {
+                const response = await fetch(corsProxy + dataUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Błąd pobierania danych:", error);
+                document.getElementById('loading').textContent = "Nie udało się pobrać danych.";
+                return null;
+            }
+        }
+        function displayLatestImage(data) {
+            if (!data || data.length === 0) {
+                document.getElementById('loading').textContent = "Brak dostępnych danych.";
+                return;
+            }
+            const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
+            let latestImageUrl = sortedData[0].url;
+            latestImageUrl = baseUrl + latestImageUrl;
+            const satelliteImage = document.getElementById('satelliteImage');
+            satelliteImage.src = latestImageUrl;
+            satelliteImage.classList.remove('hidden');
+            const imageDateTime = document.getElementById('imageDateTime');
+
+            // Format the date from the timestamp
+            const timestamp = sortedData[0].timestamp * 1000; // Convert to milliseconds
+            const date = new Date(timestamp);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const year = date.getFullYear();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const formattedDate = `${day}-${month}-${year}`;
+            const formattedTime = `${hours}:${minutes}`;
+
+            const latestImageTime = formattedDate + " " + formattedTime;
+            imageDateTime.textContent = "Polska: " + latestImageTime;
+            imageDateTime.classList.remove('hidden');
+            document.getElementById('loading').classList.add('hidden');
+        }
+        async function init() {
+            const satelliteData = await fetchSatelliteData();
+            if (satelliteData) {
+                displayLatestImage(satelliteData);
+            }
+        }
+        init();
+    </script>
+</body>
+</html>
