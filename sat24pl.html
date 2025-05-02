@@ -2,37 +2,54 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>sat24 PL</title>
+    <title>sat24 PL teraz</title>
+    <link rel="icon" type="image/x-icon" href="https://assets.infoplaza.io/internationalsite/assets/logos/v0/cloudLogo.svg">
+    <link rel="apple-touch-icon" href="./images/satappleicon.png" />
     <style>
-        #satelliteImage {
+        #satelliteImage, #staticImage {
+            margin-top: 30px;
             max-width: 100%;
-            height: auto;
+            max-height: 1000px;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
-        #imageDateTime {
-			font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-            margin-top: 5px;
-        }
-        #loading {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 5px;
-            font-size: 1.2em;
+        #staticImage {
             z-index: 10;
         }
-        .hidden {
-            display: none;
+        #imageDateTime {
+            font-size: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            position: relative;
+            z-index: 11;
         }
-    </style>
+        
+        .image-container {
+            position: relative;
+            width: 100%;
+        }
+        #saveButton {
+            position: absolute;
+            z-index: 13;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: -63px 0 0 400px;
+        }
+        #saveButton:hover {
+            background-color: #367c39;
+        }
+        </style>
 </head>
 <body>
-    <div id="loading">Pobieranie danych...</div>
-    <img id="satelliteImage" src="" alt="Najnowszy obraz satelitarny" class="hidden">
-    <p id="imageDateTime" class="hidden"></p>
+    <div class="image-container">
+        <img id="satelliteImage" src="" alt="Najnowszy obraz satelitarny" class="hidden">
+        <img id="staticImage" src="https://maptiler.infoplaza.io/api/maps/Border/static/19.58,51.71,6.3/1560x1560.png?attribution=false" alt="Mapa granic">
+        </div><p id="imageDateTime" class="hidden"></p><button id="saveButton" class="hidden">Pobierz zdjęcie sat</button>
     <script>
         const dataUrl = "https://www.sat24.com/radar/sat?north=55.82&south=47.19&east=26.54&zoom=7.3&west=12.62&timestamp=1717105500&timezone=Europe/Warsaw&culture=pl-PL&country=AA";
         const baseUrl = "https://imn-api.meteoplaza.com/v4/nowcast/tiles";
@@ -49,13 +66,14 @@
                 return data;
             } catch (error) {
                 console.error("Błąd pobierania danych:", error);
-                document.getElementById('loading').textContent = "Nie udało się pobrać danych.";
                 return null;
             }
         }
+        let imageTimestamp = null;
+
         function displayLatestImage(data) {
             if (!data || data.length === 0) {
-                document.getElementById('loading').textContent = "Brak dostępnych danych.";
+                console.error("Brak dostępnych danych.");
                 return;
             }
             const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
@@ -65,29 +83,56 @@
             satelliteImage.src = latestImageUrl;
             satelliteImage.classList.remove('hidden');
             const imageDateTime = document.getElementById('imageDateTime');
-
-            // Format the date from the timestamp
-            const timestamp = sortedData[0].timestamp * 1000; // Convert to milliseconds
+            const timestamp = sortedData[0].timestamp * 1000;
+            imageTimestamp = timestamp;
             const date = new Date(timestamp);
             const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const month = String(date.getMonth() + 1).padStart(2, '0');
             const year = date.getFullYear();
             const hours = String(date.getHours()).padStart(2, '0');
             const minutes = String(date.getMinutes()).padStart(2, '0');
             const formattedDate = `${day}-${month}-${year}`;
             const formattedTime = `${hours}:${minutes}`;
-
-            const latestImageTime = formattedDate + " " + formattedTime;
-            imageDateTime.textContent = "Polska: " + latestImageTime;
+            imageDateTime.textContent = "Polska, " + formattedDate + " " + formattedTime;
             imageDateTime.classList.remove('hidden');
-            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('saveButton').classList.remove('hidden');
         }
+
         async function init() {
             const satelliteData = await fetchSatelliteData();
             if (satelliteData) {
                 displayLatestImage(satelliteData);
             }
         }
+
+        document.getElementById('saveButton').addEventListener('click', () => {
+            const img = document.getElementById('satelliteImage');
+            if (imageTimestamp === null) {
+                console.error("Nieprawidłowy znacznik czasu.");
+                return;
+            }
+            const date = new Date(imageTimestamp);
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            const filename = `sat_pl_${hours}${minutes}_${day}${month}${year}.jpg`;
+            fetch(img.src)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                })
+                .catch(error => console.error('Error downloading image:', error));
+        });
+        
         init();
     </script>
 </body>
